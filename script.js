@@ -32,6 +32,18 @@ document.addEventListener('DOMContentLoaded', function() {
         ugcSlider.innerHTML = items + items + items + items;
     }
 
+    // UGC Videos - play on hover
+    const ugcVideos = document.querySelectorAll('.ugc-video-wrapper video');
+    ugcVideos.forEach(video => {
+        video.addEventListener('mouseenter', () => {
+            video.play();
+        });
+        video.addEventListener('mouseleave', () => {
+            video.pause();
+            video.currentTime = 0;
+        });
+    });
+
     // Infinite logos slider - duplicate items for seamless loop
     const logosSlider = document.querySelector('.logos-slider');
     if (logosSlider) {
