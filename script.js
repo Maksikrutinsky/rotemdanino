@@ -28,64 +28,81 @@ document.addEventListener('DOMContentLoaded', function() {
     // Infinite UGC slider - duplicate items multiple times for seamless loop
     const ugcSlider = document.querySelector('.ugc-slider');
     if (ugcSlider) {
-        // First, load first frame of all original videos
-        const originalVideos = ugcSlider.querySelectorAll('.ugc-video-wrapper video');
-        originalVideos.forEach(video => {
-            // Load metadata and seek to first frame
-            video.load();
-            video.addEventListener('loadeddata', () => {
-                video.currentTime = 0.1; // Seek to show first frame
-            }, { once: true });
-        });
-
         const items = ugcSlider.innerHTML;
         ugcSlider.innerHTML = items + items + items + items;
 
-        // Re-attach event listeners to all duplicated videos
+        let currentFullscreenVideo = null;
+
+        // Single global fullscreen change listener
+        const handleFullscreenExit = () => {
+            if (!document.fullscreenElement && !document.webkitFullscreenElement) {
+                if (currentFullscreenVideo) {
+                    currentFullscreenVideo.pause();
+                    currentFullscreenVideo.currentTime = 0;
+                    currentFullscreenVideo = null;
+                }
+                // Force restart animation
+                ugcSlider.style.animation = 'none';
+                ugcSlider.offsetHeight; // Trigger reflow
+                ugcSlider.style.animation = '';
+                ugcSlider.style.animationPlayState = 'running';
+            }
+        };
+
+        document.addEventListener('fullscreenchange', handleFullscreenExit);
+        document.addEventListener('webkitfullscreenchange', handleFullscreenExit);
+
+        // Attach event listeners to all videos
         const allUgcVideos = ugcSlider.querySelectorAll('.ugc-video-wrapper video');
         allUgcVideos.forEach(video => {
             // Desktop: hover to play preview
             video.addEventListener('mouseenter', () => {
-                video.play();
+                video.play().catch(() => {});
             });
             video.addEventListener('mouseleave', () => {
                 video.pause();
                 video.currentTime = 0;
             });
 
-            // Click: open fullscreen
+            // Click/touch: open fullscreen
             video.addEventListener('click', (e) => {
                 e.stopPropagation();
+                e.preventDefault();
 
                 // Pause slider animation
                 ugcSlider.style.animationPlayState = 'paused';
+                currentFullscreenVideo = video;
 
                 // Request fullscreen
                 if (video.requestFullscreen) {
-                    video.requestFullscreen();
+                    video.requestFullscreen().then(() => {
+                        video.play();
+                    }).catch(() => {
+                        // Fallback: just play
+                        video.play();
+                    });
                 } else if (video.webkitRequestFullscreen) {
                     video.webkitRequestFullscreen();
+                    video.play();
                 } else if (video.webkitEnterFullscreen) {
-                    // iOS Safari
+                    // iOS Safari native player
                     video.webkitEnterFullscreen();
+                    video.play();
+                } else {
+                    // Fallback: just play
+                    video.play();
                 }
-                video.play();
             });
 
-            // Resume slider when exiting fullscreen
-            document.addEventListener('fullscreenchange', () => {
-                if (!document.fullscreenElement) {
-                    video.pause();
-                    video.currentTime = 0;
-                    ugcSlider.style.animationPlayState = 'running';
-                }
-            });
-            document.addEventListener('webkitfullscreenchange', () => {
-                if (!document.webkitFullscreenElement) {
-                    video.pause();
-                    video.currentTime = 0;
-                    ugcSlider.style.animationPlayState = 'running';
-                }
+            // iOS Safari: handle native player exit
+            video.addEventListener('webkitendfullscreen', () => {
+                video.pause();
+                video.currentTime = 0;
+                currentFullscreenVideo = null;
+                ugcSlider.style.animation = 'none';
+                ugcSlider.offsetHeight;
+                ugcSlider.style.animation = '';
+                ugcSlider.style.animationPlayState = 'running';
             });
         });
     }
