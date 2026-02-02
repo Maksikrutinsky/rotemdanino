@@ -30,19 +30,24 @@ document.addEventListener('DOMContentLoaded', function() {
     if (ugcSlider) {
         const items = ugcSlider.innerHTML;
         ugcSlider.innerHTML = items + items + items + items;
+
+        // Re-attach lazy load listeners to all duplicated videos
+        const allUgcVideos = ugcSlider.querySelectorAll('.ugc-video-wrapper video');
+        allUgcVideos.forEach(video => {
+            video.addEventListener('mouseenter', () => {
+                if (!video.src && video.dataset.src) {
+                    video.src = video.dataset.src;
+                    video.load();
+                }
+                video.play();
+            });
+            video.addEventListener('mouseleave', () => {
+                video.pause();
+                video.currentTime = 0;
+            });
+        });
     }
 
-    // UGC Videos - play on hover
-    const ugcVideos = document.querySelectorAll('.ugc-video-wrapper video');
-    ugcVideos.forEach(video => {
-        video.addEventListener('mouseenter', () => {
-            video.play();
-        });
-        video.addEventListener('mouseleave', () => {
-            video.pause();
-            video.currentTime = 0;
-        });
-    });
 
     // Infinite logos slider - duplicate items for seamless loop
     const logosSlider = document.querySelector('.logos-slider');
