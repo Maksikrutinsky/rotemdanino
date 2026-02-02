@@ -31,43 +31,31 @@ document.addEventListener('DOMContentLoaded', function() {
         const items = ugcSlider.innerHTML;
         ugcSlider.innerHTML = items + items + items + items;
 
-        // Re-attach lazy load listeners to all duplicated videos
+        // Re-attach event listeners to all duplicated videos
         const allUgcVideos = ugcSlider.querySelectorAll('.ugc-video-wrapper video');
         allUgcVideos.forEach(video => {
-            // Function to load and play video
-            const playVideo = () => {
-                if (!video.src && video.dataset.src) {
-                    video.src = video.dataset.src;
-                    video.load();
-                }
+            // Desktop: hover to play preview
+            video.addEventListener('mouseenter', () => {
                 video.play();
-            };
-
-            // Function to pause video
-            const pauseVideo = () => {
+            });
+            video.addEventListener('mouseleave', () => {
                 video.pause();
                 video.currentTime = 0;
-            };
+            });
 
-            // Desktop: hover events
-            video.addEventListener('mouseenter', playVideo);
-            video.addEventListener('mouseleave', pauseVideo);
-
-            // Mobile: click/tap to toggle play
+            // Click: open fullscreen
             video.addEventListener('click', (e) => {
                 e.stopPropagation();
-                if (video.paused) {
-                    // Pause all other videos first
-                    allUgcVideos.forEach(v => {
-                        if (v !== video && !v.paused) {
-                            v.pause();
-                            v.currentTime = 0;
-                        }
-                    });
-                    playVideo();
-                } else {
-                    pauseVideo();
+                // Request fullscreen
+                if (video.requestFullscreen) {
+                    video.requestFullscreen();
+                } else if (video.webkitRequestFullscreen) {
+                    video.webkitRequestFullscreen();
+                } else if (video.webkitEnterFullscreen) {
+                    // iOS Safari
+                    video.webkitEnterFullscreen();
                 }
+                video.play();
             });
         });
     }
