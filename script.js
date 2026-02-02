@@ -34,16 +34,40 @@ document.addEventListener('DOMContentLoaded', function() {
         // Re-attach lazy load listeners to all duplicated videos
         const allUgcVideos = ugcSlider.querySelectorAll('.ugc-video-wrapper video');
         allUgcVideos.forEach(video => {
-            video.addEventListener('mouseenter', () => {
+            // Function to load and play video
+            const playVideo = () => {
                 if (!video.src && video.dataset.src) {
                     video.src = video.dataset.src;
                     video.load();
                 }
                 video.play();
-            });
-            video.addEventListener('mouseleave', () => {
+            };
+
+            // Function to pause video
+            const pauseVideo = () => {
                 video.pause();
                 video.currentTime = 0;
+            };
+
+            // Desktop: hover events
+            video.addEventListener('mouseenter', playVideo);
+            video.addEventListener('mouseleave', pauseVideo);
+
+            // Mobile: click/tap to toggle play
+            video.addEventListener('click', (e) => {
+                e.stopPropagation();
+                if (video.paused) {
+                    // Pause all other videos first
+                    allUgcVideos.forEach(v => {
+                        if (v !== video && !v.paused) {
+                            v.pause();
+                            v.currentTime = 0;
+                        }
+                    });
+                    playVideo();
+                } else {
+                    pauseVideo();
+                }
             });
         });
     }
