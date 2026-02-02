@@ -28,6 +28,16 @@ document.addEventListener('DOMContentLoaded', function() {
     // Infinite UGC slider - duplicate items multiple times for seamless loop
     const ugcSlider = document.querySelector('.ugc-slider');
     if (ugcSlider) {
+        // First, load first frame of all original videos
+        const originalVideos = ugcSlider.querySelectorAll('.ugc-video-wrapper video');
+        originalVideos.forEach(video => {
+            // Load metadata and seek to first frame
+            video.load();
+            video.addEventListener('loadeddata', () => {
+                video.currentTime = 0.1; // Seek to show first frame
+            }, { once: true });
+        });
+
         const items = ugcSlider.innerHTML;
         ugcSlider.innerHTML = items + items + items + items;
 
@@ -46,6 +56,10 @@ document.addEventListener('DOMContentLoaded', function() {
             // Click: open fullscreen
             video.addEventListener('click', (e) => {
                 e.stopPropagation();
+
+                // Pause slider animation
+                ugcSlider.style.animationPlayState = 'paused';
+
                 // Request fullscreen
                 if (video.requestFullscreen) {
                     video.requestFullscreen();
@@ -56,6 +70,22 @@ document.addEventListener('DOMContentLoaded', function() {
                     video.webkitEnterFullscreen();
                 }
                 video.play();
+            });
+
+            // Resume slider when exiting fullscreen
+            document.addEventListener('fullscreenchange', () => {
+                if (!document.fullscreenElement) {
+                    video.pause();
+                    video.currentTime = 0;
+                    ugcSlider.style.animationPlayState = 'running';
+                }
+            });
+            document.addEventListener('webkitfullscreenchange', () => {
+                if (!document.webkitFullscreenElement) {
+                    video.pause();
+                    video.currentTime = 0;
+                    ugcSlider.style.animationPlayState = 'running';
+                }
             });
         });
     }
