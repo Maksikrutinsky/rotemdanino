@@ -1160,7 +1160,7 @@ body {
     transform: translateX(-50%);
     font-family: 'Playfair Display', serif;
     font-style: italic;
-    font-size: 7rem;
+    font-size: 5rem;
     color: rgba(174,36,75,0.06);
     white-space: nowrap;
     pointer-events: none;
