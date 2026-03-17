@@ -1866,8 +1866,8 @@ body {
     width: 48px;
     height: 48px;
     border-radius: 50%;
-    background: rgba(174, 36, 75, 0.12);
-    border: 2px solid rgba(174, 36, 75, 0.35);
+    background: rgba(174, 36, 75, 0.05);
+    border: 2px solid rgba(174, 36, 75, 0.18);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -1884,8 +1884,8 @@ body {
     transition: color 0.3s ease;
 }
 .process-step.wf-visible .process-node {
-    border-color: rgba(174, 36, 75, 0.5);
-    background: rgba(174, 36, 75, 0.15);
+    border-color: rgba(174, 36, 75, 0.28);
+    background: rgba(174, 36, 75, 0.08);
     transform: scale(1.1);
 }
 .process-step.wf-visible .process-node-num {
