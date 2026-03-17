@@ -619,7 +619,7 @@ body {
 .category-number {
     font-family: 'Great Vibes', cursive;
     font-size: 2.2rem;
-    color: var(--brown-light);
+    color: var(--rose);
     line-height: 1;
     min-width: 48px;
 }
