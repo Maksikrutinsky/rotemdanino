@@ -305,8 +305,8 @@ navHamburger.addEventListener('click', () => {
     prevBtn && prevBtn.addEventListener('click', goPrev);
     nextBtn && nextBtn.addEventListener('click', goNext);
 
-    // Touch / drag support
-    track.addEventListener('touchstart', e => { startX = e.touches[0].clientX; isDragging = true; }, { passive: true });
+    // Touch / drag support — RTL: swipe left (negative offset) = next (forward), swipe right = prev (back)
+    track.addEventListener('touchstart', e => { startX = e.touches[0].clientX; isDragging = true; dragOffset = 0; }, { passive: true });
     track.addEventListener('touchmove', e => {
         if (!isDragging) return;
         dragOffset = e.touches[0].clientX - startX;
@@ -314,30 +314,22 @@ navHamburger.addEventListener('click', () => {
     track.addEventListener('touchend', () => {
         if (!isDragging) return;
         isDragging = false;
-        if (dragOffset < -50) goNext();
-        else if (dragOffset > 50) goPrev();
+        if (dragOffset > 50) goNext();
+        else if (dragOffset < -50) goPrev();
         dragOffset = 0;
     });
 
-    // Mouse drag
-    track.addEventListener('mousedown', e => { startX = e.clientX; isDragging = true; track.style.cursor = 'grabbing'; });
+    // Mouse drag — same RTL logic
+    track.addEventListener('mousedown', e => { startX = e.clientX; isDragging = true; dragOffset = 0; track.style.cursor = 'grabbing'; });
     window.addEventListener('mousemove', e => { if (!isDragging) return; dragOffset = e.clientX - startX; });
     window.addEventListener('mouseup', () => {
         if (!isDragging) return;
         isDragging = false;
         track.style.cursor = '';
-        if (dragOffset < -50) goNext();
-        else if (dragOffset > 50) goPrev();
+        if (dragOffset > 50) goNext();
+        else if (dragOffset < -50) goPrev();
         dragOffset = 0;
     });
-
-    // Auto-play
-    let autoPlay = setInterval(goNext, 4000);
-    const wrapper = document.querySelector('.stills-carousel-wrapper');
-    if (wrapper) {
-        wrapper.addEventListener('mouseenter', () => clearInterval(autoPlay));
-        wrapper.addEventListener('mouseleave', () => { autoPlay = setInterval(goNext, 4000); });
-    }
 
     // Responsive resize
     window.addEventListener('resize', () => {
