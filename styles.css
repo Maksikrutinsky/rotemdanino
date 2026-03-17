@@ -525,7 +525,7 @@ body {
     transform: translateX(-50%);
     font-family: 'Great Vibes', cursive;
     font-size: 18rem;
-    color: rgba(0,0,0,0.025);
+    color: rgba(174,36,75,0.05);
     white-space: nowrap;
     pointer-events: none;
     line-height: 1;
@@ -911,6 +911,7 @@ body {
     .logos-scatter-grid {
         grid-template-columns: repeat(4, 1fr);
         gap: 16px 10px;
+        padding: 20px 20px 40px;
     }
 
     .logo-scatter--xl { --logo-size: 185px; }
@@ -926,6 +927,7 @@ body {
 
     .clients-logos-section::before {
         font-size: 6rem;
+        top: 40px;
     }
 
     .clients-logos-title {
@@ -935,18 +937,25 @@ body {
 
     .logos-scatter-grid {
         grid-template-columns: repeat(3, 1fr);
-        gap: 14px 8px;
+        gap: 14px 10px;
+        padding: 20px 16px 40px;
+        justify-items: center;
     }
-
-    .logo-scatter--xl { --logo-size: 140px; }
-    .logo-scatter--lg { --logo-size: 118px; }
-    .logo-scatter--md { --logo-size: 100px; }
-    .logo-scatter--sm { --logo-size: 85px; }
 
     .logo-scatter {
+        width: 100%;
+        height: auto;
+        aspect-ratio: 3/2;
+        margin-top: 0 !important;
         padding: 12px 14px;
         border-radius: 14px;
+        transform: none !important;
     }
+
+    .logo-scatter--xl,
+    .logo-scatter--lg,
+    .logo-scatter--md,
+    .logo-scatter--sm { --logo-size: 100%; }
 }
 
 /* Before & After Section */
