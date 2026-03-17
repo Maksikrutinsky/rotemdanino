@@ -158,11 +158,6 @@ body {
 
 .image-frame {
     width: 260px;
-    height: 340px;
-    border-radius: 100px 100px 30px 30px;
-    overflow: hidden;
-    box-shadow: 0 24px 64px rgba(139, 115, 85, 0.16);
-    border: 1px solid rgba(184, 160, 137, 0.2);
     transition: transform 0.6s ease;
 }
 .image-frame:hover {
@@ -171,9 +166,8 @@ body {
 
 .image-frame img {
     width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center top;
+    height: auto;
+    display: block;
 }
 
 /* CTA Button */
@@ -281,8 +275,7 @@ body {
     }
 
     .image-frame {
-        width: 240px;
-        height: 300px;
+        width: 220px;
     }
 
     .cta-button {
