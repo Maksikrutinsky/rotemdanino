@@ -6,18 +6,62 @@
     <title>רותם דנינו | מנהלת סושיאל</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@300;400;500;600;700;800&family=Great+Vibes&family=Playfair+Display:ital@1&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <!-- Parallax Background -->
     <div class="parallax-bg"></div>
 
+    <!-- Top Navigation Bar -->
+    <nav class="top-navbar" id="top-navbar">
+        <!-- Hamburger Menu (Right side in RTL) -->
+        <button class="navbar-hamburger" id="navbar-hamburger" aria-label="תפריט">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+        <!-- Center Logo -->
+        <div class="navbar-logo">
+            <img src="logo.png" alt="לוגו" class="navbar-logo-img">
+        </div>
+
+        <!-- Social Icons (Left side in RTL) -->
+        <div class="navbar-social">
+            <a href="https://wa.me/972XXXXXXXXX" class="navbar-social-link" aria-label="וואטסאפ" target="_blank">
+                <svg viewBox="0 0 24 24" fill="currentColor" width="22" height="22">
+                    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+                </svg>
+            </a>
+            <a href="https://instagram.com/" class="navbar-social-link" aria-label="אינסטגרם" target="_blank">
+                <svg viewBox="0 0 24 24" fill="currentColor" width="22" height="22">
+                    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/>
+                </svg>
+            </a>
+        </div>
+
+        <!-- Mobile Dropdown Menu -->
+        <div class="navbar-menu" id="navbar-menu">
+            <a href="#hero" class="navbar-menu-item" onclick="closeNavMenu()">דף הבית</a>
+            <a href="#portfolio" class="navbar-menu-item" onclick="closeNavMenu()">פורטפוליו</a>
+            <a href="#about" class="navbar-menu-item" onclick="closeNavMenu()">נעים להכיר</a>
+            <a href="#services" class="navbar-menu-item" onclick="closeNavMenu()">שירותים</a>
+            <a href="#contact" class="navbar-menu-item" onclick="closeNavMenu()">צור קשר</a>
+        </div>
+    </nav>
+    <!-- Navbar Overlay -->
+    <div class="navbar-overlay" id="navbar-overlay" onclick="closeNavMenu()"></div>
+
     <!-- Hero Section -->
-    <section class="hero-section">
+    <section class="hero-section" id="hero">
+        <div class="hero-bg-text">RD Social</div>
         <div class="container">
             <div class="hero-content">
-                <p class="hero-subtitle">במיוחד לבעלי עסקים שמעלים תוכן לרשתות, <span class="red-text">וסובלים מחוסר פניות.</span></p>
+
+                <div class="hero-badge">
+                    לבעלי עסקים שמשווקים באינסטגרם ועושים מעל 30,000 שקלים בחודש
+                </div>
 
                 <h1 class="hero-title">אחרי שעבדתי עם המותגים הכי גדולים במדינה <span class="highlight">אני אהפוך את העסק שלכם למותג בסושיאל</span></h1>
 
@@ -90,307 +134,366 @@
     <!-- Clients Logos Section -->
     <section class="clients-logos-section">
         <div class="container">
-            <h2 class="clients-logos-title">נבחרת הלקוחות שלנו</h2>
-        </div>
-        <div class="logos-slider-wrapper">
-            <div class="logos-slider">
-                <div class="logo-item">
-                    <img src="logo1.webp" alt="לוגו 1">
-                </div>
-                <div class="logo-item">
-                    <img src="logo2.webp" alt="לוגו 2">
-                </div>
-                <div class="logo-item">
-                    <img src="logo3.webp" alt="לוגו 3">
-                </div>
-                <div class="logo-item">
-                    <img src="logo4.webp" alt="לוגו 4">
-                </div>
-                <div class="logo-item">
-                    <img src="logo5.webp" alt="לוגו 5">
-                </div>
-                <div class="logo-item">
-                    <img src="logo6.webp" alt="לוגו 6">
-                </div>
-                <div class="logo-item">
-                    <img src="logo7.webp" alt="לוגו 7">
-                </div>
-                <div class="logo-item">
-                    <img src="logo8.webp" alt="לוגו 8">
-                </div>
-                <div class="logo-item">
-                    <img src="logo9.webp" alt="לוגו 9">
-                </div>
-                <div class="logo-item">
-                    <img src="logo10.webp" alt="לוגו 10">
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Before & After Section -->
-    <section class="before-after-section">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="warning-title">אזהרה!</h2>
-                <p class="section-subtitle">גם העסק שלכם עלול לעבור את המהפך הזה...<br>קבלו הצצה לתוכן משנה חיים.</p>
-            </div>
-
-            <div class="before-after-grid">
-                <div class="before-after-card">
-                    <div class="card-side after">
-                        <span class="side-label">אחרי</span>
-                        <div class="card-image">
-                            <img src="אחרי 1.webp" alt="אחרי 1">
-                        </div>
-                    </div>
-                    <div class="card-divider">
-                        <div class="arrow-icon">→</div>
-                    </div>
-                    <div class="card-side before">
-                        <span class="side-label">לפני</span>
-                        <div class="card-image">
-                            <img src="לפני 1 .webp" alt="לפני 1">
-                        </div>
-                    </div>
-                </div>
-
-                <div class="before-after-card">
-                    <div class="card-side after">
-                        <span class="side-label">אחרי</span>
-                        <div class="card-image">
-                            <img src="אחרי 2.webp" alt="אחרי 2">
-                        </div>
-                    </div>
-                    <div class="card-divider">
-                        <div class="arrow-icon">→</div>
-                    </div>
-                    <div class="card-side before">
-                        <span class="side-label">לפני</span>
-                        <div class="card-image">
-                            <img src="לפני 2.webp" alt="לפני 2">
-                        </div>
-                    </div>
-                </div>
-
-                <div class="before-after-card">
-                    <div class="card-side after">
-                        <span class="side-label">אחרי</span>
-                        <div class="card-image">
-                            <img src="אחרי 4.webp" alt="אחרי 4">
-                        </div>
-                    </div>
-                    <div class="card-divider">
-                        <div class="arrow-icon">→</div>
-                    </div>
-                    <div class="card-side before">
-                        <span class="side-label">לפני</span>
-                        <div class="card-image">
-                            <img src="לפני 4.webp" alt="לפני 4">
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="section-cta">
-                <a href="#contact" class="cta-button cta-brown">
-                    לשיחת התאמה ללא עלות
-                    <span class="arrow">»</span>
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Testimonials Section -->
-    <section class="testimonials-section">
-        <div class="testimonials-bg-pattern"></div>
-        <div class="container">
-            <h2 class="testimonials-title">מסר מהלקוחות שלנו</h2>
-            <div class="testimonials-subtitle">תוצאות אמיתיות. לקוחות אמיתיים.</div>
-        </div>
-        <div class="testimonials-slider-wrapper">
-            <div class="testimonials-slider">
-                <div class="testimonial-item">
-                    <img src="w1.webp" alt="המלצה 1">
-                </div>
-                <div class="testimonial-item">
-                    <img src="w2.webp" alt="המלצה 2">
-                </div>
-                <div class="testimonial-item">
-                    <img src="w3.webp" alt="המלצה 3">
-                </div>
-                <div class="testimonial-item">
-                    <img src="w4.webp" alt="המלצה 4">
-                </div>
-                <div class="testimonial-item">
-                    <img src="w5.webp" alt="המלצה 5">
-                </div>
-                <div class="testimonial-item">
-                    <img src="w6.webp" alt="המלצה 6">
-                </div>
-                <div class="testimonial-item">
-                    <img src="w7.webp" alt="המלצה 7">
-                </div>
-                <div class="testimonial-item">
-                    <img src="w8.webp" alt="המלצה 8">
-                </div>
-                <div class="testimonial-item">
-                    <img src="w9.webp" alt="המלצה 9">
-                </div>
-                <div class="testimonial-item">
-                    <img src="w10.webp" alt="המלצה 10">
-                </div>
-                <div class="testimonial-item">
-                    <img src="w11.webp" alt="המלצה 11">
-                </div>
-                <div class="testimonial-item">
-                    <img src="w12.webp" alt="המלצה 12">
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Services Section -->
-    <section class="services-section">
-        <div class="container">
-            <h2 class="services-title">השירותים שלי</h2>
-            <div class="services-grid">
-                <div class="service-card">
-                    <div class="service-icon">
-                        <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M24 4L4 14V34L24 44L44 34V14L24 4Z" stroke="#b8a9c9" stroke-width="2" fill="none"/>
-                            <path d="M24 20C26.2091 20 28 18.2091 28 16C28 13.7909 26.2091 12 24 12C21.7909 12 20 13.7909 20 16C20 18.2091 21.7909 20 24 20Z" stroke="#b8a9c9" stroke-width="2"/>
-                            <path d="M16 32C16 27.5817 19.5817 24 24 24C28.4183 24 32 27.5817 32 32" stroke="#b8a9c9" stroke-width="2"/>
-                        </svg>
-                    </div>
-                    <h3 class="service-name">ניהול סושיאל</h3>
-                    <p class="service-description">ניהול שוטף של הנוכחות הדיגיטלית של העסק - הכולל יצירת תוכן, תכנון אסטרטגי, כתיבת פוסטים, עיצוב, קידום ממומן וניהול יומיומי של העמודים ברשתות החברתיות. המטרה: פיד חי, מעניין וממיר, שמייצר נוכחות חזקה ובולטת לאורך זמן.</p>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">
-                        <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <rect x="8" y="8" width="32" height="24" rx="3" stroke="#b8a9c9" stroke-width="2" fill="none"/>
-                            <circle cx="24" cy="20" r="6" stroke="#b8a9c9" stroke-width="2"/>
-                            <path d="M16 36L24 32L32 36" stroke="#b8a9c9" stroke-width="2"/>
-                            <path d="M24 32V40" stroke="#b8a9c9" stroke-width="2"/>
-                        </svg>
-                    </div>
-                    <h3 class="service-name">ימי צילום</h3>
-                    <p class="service-description">יום צילום מקצועי ליצירת תוכן ויזואלי מותאם אישית לעסק שלכם - תמונות, סרטונים, רילס ועוד. הכול נבנה בהתאם לשפה הוויזואלית, הערכים והאופי הייחודי של המותג.</p>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">
-                        <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M12 8H36C38.2091 8 40 9.79086 40 12V36C40 38.2091 38.2091 40 36 40H12C9.79086 40 8 38.2091 8 36V12C8 9.79086 9.79086 8 12 8Z" stroke="#b8a9c9" stroke-width="2" fill="none"/>
-                            <path d="M20 18L28 24L20 30V18Z" stroke="#b8a9c9" stroke-width="2" fill="none"/>
-                            <path d="M16 44H32" stroke="#b8a9c9" stroke-width="2"/>
-                            <path d="M24 40V44" stroke="#b8a9c9" stroke-width="2"/>
-                        </svg>
-                    </div>
-                    <h3 class="service-name">UGC</h3>
-                    <p class="service-description">תוכן אותנטי שמדמה חוויית שימוש אמיתית במוצר או בשירות שלכם. תוכן שהקהל מזהה, סומך עליו ומגיב אליו. מושלם לקמפיינים ממומנים, תוכן אורגני ולבניית חיבור אמיתי עם הלקוחות.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Process Section -->
-    <section class="process-section">
-        <div class="process-bg-shapes">
-            <div class="process-shape process-shape-1"></div>
-            <div class="process-shape process-shape-2"></div>
-        </div>
-        <div class="container">
-            <h2 class="process-title">תהליך העבודה</h2>
-            <div class="process-timeline">
-                <div class="process-step">
-                    <div class="step-number">01</div>
-                    <div class="step-icon">
-                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M17 2H7C5.9 2 5 2.9 5 4V20C5 21.1 5.9 22 7 22H17C18.1 22 19 21.1 19 20V4C19 2.9 18.1 2 17 2ZM12 20C11.45 20 11 19.55 11 19C11 18.45 11.45 18 12 18C12.55 18 13 18.45 13 19C13 19.55 12.55 20 12 20ZM17 17H7V5H17V17Z" stroke="currentColor" fill="none"/>
-                        </svg>
-                    </div>
-                    <div class="step-content">
-                        <h3 class="step-title">שיחת היכרות ואפיון</h3>
-                        <p class="step-description">נכיר את העסק, נבין את הצרכים, קהל היעד, המטרות והחזון של המותג.</p>
-                    </div>
-                </div>
-                <div class="process-step">
-                    <div class="step-number">02</div>
-                    <div class="step-icon">
-                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M9.5 3C4.5 3 2 6.5 2 9.5C2 14.28 7.71 19 12 21.5C16.29 19 22 14.28 22 9.5C22 6.5 19.5 3 14.5 3C12.76 3 11.09 3.81 12 5C12.91 3.81 11.24 3 9.5 3ZM12 18C7.5 15.5 4 12 4 9.5C4 7.5 5.5 5 9.5 5C10.54 5 11.54 5.24 12.45 5.72L12 6.27L11.55 5.72C12.46 5.24 13.46 5 14.5 5C18.5 5 20 7.5 20 9.5C20 12 16.5 15.5 12 18Z" stroke="currentColor" fill="none"/>
-                            <circle cx="12" cy="11" r="2" stroke="currentColor" fill="none"/>
-                        </svg>
-                    </div>
-                    <div class="step-content">
-                        <h3 class="step-title">בניית אסטרטגיית תוכן וסושיאל</h3>
-                        <p class="step-description">גיבוש קונספט, שפה קריאייטיבית, תכנון תוכן ומתחרים בשוק.</p>
-                    </div>
-                </div>
-                <div class="process-step">
-                    <div class="step-number">03</div>
-                    <div class="step-icon">
-                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                            <circle cx="12" cy="12" r="3" stroke="currentColor" fill="none"/>
-                            <path d="M20 4H16.83L15 2H9L7.17 4H4C2.9 4 2 4.9 2 6V18C2 19.1 2.9 20 4 20H20C21.1 20 22 19.1 22 18V6C22 4.9 21.1 4 20 4ZM12 17C9.24 17 7 14.76 7 12C7 9.24 9.24 7 12 7C14.76 7 17 9.24 17 12C17 14.76 14.76 17 12 17Z" stroke="currentColor" fill="none"/>
-                        </svg>
-                    </div>
-                    <div class="step-content">
-                        <h3 class="step-title">יום צילום ויצירת תוכן</h3>
-                        <p class="step-description">הפקת תוכן ויזואלי מותאם למותג. תמונות, סרטונים ורילס בהתאם לאסטרטגיה.</p>
-                    </div>
-                </div>
-                <div class="process-step">
-                    <div class="step-number">04</div>
-                    <div class="step-icon">
-                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M19 3H5C3.9 3 3 3.9 3 5V19C3 20.1 3.9 21 5 21H19C20.1 21 21 20.1 21 19V5C21 3.9 20.1 3 19 3ZM19 19H5V5H19V19Z" stroke="currentColor" fill="none"/>
-                            <path d="M7 12H17M7 8H17M7 16H13" stroke="currentColor" stroke-linecap="round"/>
-                        </svg>
-                    </div>
-                    <div class="step-content">
-                        <h3 class="step-title">העלאה וניהול התכנים</h3>
-                        <p class="step-description">עריכת החומרים, כתיבת פוסטים, תזמון והעלאה לרשתות החברתיות.</p>
-                    </div>
-                </div>
-                <div class="process-step">
-                    <div class="step-number">05</div>
-                    <div class="step-icon">
-                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M16 6L18.29 8.29L13.41 13.17L9.41 9.17L2 16.59L3.41 18L9.41 12L13.41 16L19.71 9.71L22 12V6H16Z" stroke="currentColor" fill="none"/>
-                        </svg>
-                    </div>
-                    <div class="step-content">
-                        <h3 class="step-title">קידום ממומן ואופטימיזציה</h3>
-                        <p class="step-description">ניהול קמפיינים ממומנים, מדידה, שיפור מתמיד ומקסום תוצאות.</p>
-                    </div>
-                </div>
+            <h2 class="clients-logos-title">My Clients</h2>
+            <p class="clients-logos-subtitle">מותגים שבחרו לעבוד איתנו</p>
+            <div class="logos-scatter-grid">
+                <div class="logo-scatter logo-scatter--lg logo-scatter--tilt-r"><img src="logo1.webp" alt="לוגו 1"></div>
+                <div class="logo-scatter logo-scatter--sm logo-scatter--tilt-l"><img src="logo2.png" alt="לוגו 2"></div>
+                <div class="logo-scatter logo-scatter--md"><img src="logo3.webp" alt="לוגו 3"></div>
+                <div class="logo-scatter logo-scatter--xl logo-scatter--tilt-r"><img src="logo4.webp" alt="לוגו 4"></div>
+                <div class="logo-scatter logo-scatter--sm logo-scatter--tilt-l"><img src="logo5.webp" alt="לוגו 5"></div>
+                <div class="logo-scatter logo-scatter--md logo-scatter--tilt-r"><img src="logo6.webp" alt="לוגו 6"></div>
+                <div class="logo-scatter logo-scatter--lg"><img src="logo7.webp" alt="לוגו 7"></div>
+                <div class="logo-scatter logo-scatter--sm logo-scatter--tilt-l"><img src="logo8.webp" alt="לוגו 8"></div>
+                <div class="logo-scatter logo-scatter--md logo-scatter--tilt-r"><img src="logo9.webp" alt="לוגו 9"></div>
+                <div class="logo-scatter logo-scatter--xl logo-scatter--tilt-l"><img src="logo10.webp" alt="לוגו 10"></div>
+                <div class="logo-scatter logo-scatter--sm"><img src="logo11.webp" alt="לוגו 11"></div>
+                <div class="logo-scatter logo-scatter--lg logo-scatter--tilt-r"><img src="logo12.webp" alt="לוגו 12"></div>
+                <div class="logo-scatter logo-scatter--md logo-scatter--tilt-l"><img src="logo13.webp" alt="לוגו 13"></div>
+                <div class="logo-scatter logo-scatter--sm logo-scatter--tilt-r"><img src="logo14.webp" alt="לוגו 14"></div>
+                <div class="logo-scatter logo-scatter--lg logo-scatter--tilt-l"><img src="logo15.webp" alt="לוגו 15"></div>
             </div>
         </div>
     </section>
 
     <!-- About Section -->
     <section class="about-section" id="about">
-        <div class="about-decoration"></div>
+        <div class="about-bg-text">About</div>
         <div class="container">
             <div class="about-wrapper">
-                <div class="about-content">
-                    <span class="about-eyebrow">אם עוד לא הכרנו...</span>
-                    <h2 class="about-title">נעים להכיר!</h2>
-                    <div class="about-text">
-                        <p class="about-greeting">ברוכים הבאים!</p>
-                        <p>נעים מאוד, אני רותם – מנהלת סושיאל, יוצרת תוכן ובעלת חברת <strong>Rd social</strong>.</p>
-                        <p>מאז ומתמיד אני חיה את עולם הדיגיטל, הרשתות החברתיות, הסאונדים והטרנדים הכי חמים.</p>
-                        <p>באמצעות פיצוח אסטרטגי מותאם אישית, קריאייטיב מדויק וצילום תוכן שמדבר ישירות אל קהל היעד שלכם - אני יוצרת נוכחות דיגיטלית חזקה שמספרת את הסיפור שלכם בדרך הנכונה!</p>
-                        <p class="about-highlight">ובמילים פשוטות? אני דואגת שהעסק שלכם ייראה, יישמע וייזכר!</p>
-                    </div>
-                </div>
+
+                <!-- Image side -->
                 <div class="about-image">
                     <div class="about-image-frame">
                         <img src="IMG_9370.webp" alt="רותם דנינו">
                     </div>
-                    <div class="about-image-accent"></div>
+                    <div class="about-image-tag">
+                        <span class="about-image-tag-cursive">Rotem</span>
+                        <span class="about-image-tag-sub">Social Manager</span>
+                    </div>
+                </div>
+
+                <!-- Content side -->
+                <div class="about-content">
+                    <span class="about-eyebrow">אם עוד לא הכרנו...</span>
+                    <h2 class="about-title">נעים להכיר</h2>
+                    <div class="about-divider"></div>
+                    <div class="about-text">
+                        <p>נעים מאוד, אני רותם – מנהלת סושיאל, יוצרת תוכן ובעלת חברת <strong>Rd social</strong>.</p>
+                        <p>מאז ומתמיד אני חיה את עולם הדיגיטל, הרשתות החברתיות, הסאונדים והטרנדים הכי חמים.</p>
+                        <p>באמצעות פיצוח אסטרטגי מותאם אישית, קריאייטיב מדויק וצילום תוכן שמדבר ישירות אל קהל היעד שלכם — אני יוצרת נוכחות דיגיטלית חזקה שמספרת את הסיפור שלכם בדרך הנכונה.</p>
+                    </div>
+                    <p class="about-highlight">ובמילים פשוטות? אני דואגת שהעסק שלכם ייראה, יישמע וייזכר.</p>
+                    <a href="#contact" class="about-cta">
+                        בואו נדבר
+                        <span>←</span>
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section class="portfolio-section" id="portfolio">
+        <div class="container">
+            <h2 class="portfolio-title">My Portfolio</h2>
+            <p class="portfolio-subtitle">בחרו קטגוריה וגלו את העבודות</p>
+
+            <div class="portfolio-categories">
+                <div class="portfolio-category" data-category="ugc">
+                    <div class="category-header">
+                        <div class="category-left">
+                            <span class="category-number">01</span>
+                            <div>
+                                <h3 class="category-name">UGC</h3>
+                                <p class="category-desc">תוכן אותנטי שממיר</p>
+                            </div>
+                        </div>
+                        <div class="category-toggle">
+                            <span class="toggle-line"></span>
+                            <span class="toggle-line toggle-line-v"></span>
+                        </div>
+                    </div>
+                    <div class="category-content">
+                        <div class="portfolio-grid">
+                            <div class="portfolio-item">
+                                <span class="portfolio-item-label">PANTENE</span>
+                                <video src="https://res.cloudinary.com/dt6ig8vhw/video/upload/v1770061833/v1_lbaz5n.webm" poster="https://res.cloudinary.com/dt6ig8vhw/video/upload/so_0/v1770061833/v1_lbaz5n.jpg" muted loop playsinline preload="auto"></video>
+                                <div class="portfolio-play-btn"></div>
+                            </div>
+                            <div class="portfolio-item">
+                                <span class="portfolio-item-label">גל גונן</span>
+                                <video src="https://res.cloudinary.com/dt6ig8vhw/video/upload/v1770061830/v2_yrzpoz.webm" poster="https://res.cloudinary.com/dt6ig8vhw/video/upload/so_0/v1770061830/v2_yrzpoz.jpg" muted loop playsinline preload="auto"></video>
+                                <div class="portfolio-play-btn"></div>
+                            </div>
+                            <div class="portfolio-item">
+                                <span class="portfolio-item-label">נופר מור</span>
+                                <video src="https://res.cloudinary.com/dt6ig8vhw/video/upload/v1770061831/v3_ue2ytg.webm" poster="https://res.cloudinary.com/dt6ig8vhw/video/upload/so_0/v1770061831/v3_ue2ytg.jpg" muted loop playsinline preload="auto"></video>
+                                <div class="portfolio-play-btn"></div>
+                            </div>
+                            <div class="portfolio-item">
+                                <span class="portfolio-item-label">ADIDAS</span>
+                                <video src="https://res.cloudinary.com/dt6ig8vhw/video/upload/v1770061843/v4_fobuga.webm" poster="https://res.cloudinary.com/dt6ig8vhw/video/upload/so_0/v1770061843/v4_fobuga.jpg" muted loop playsinline preload="auto"></video>
+                                <div class="portfolio-play-btn"></div>
+                            </div>
+                            <div class="portfolio-item">
+                                <span class="portfolio-item-label">ALWAYS</span>
+                                <video src="https://res.cloudinary.com/dt6ig8vhw/video/upload/v1772963445/Captions_347858_jeh1n0.mp4" muted loop playsinline preload="auto"></video>
+                                <div class="portfolio-play-btn"></div>
+                            </div>
+                            <div class="portfolio-item">
+                                <span class="portfolio-item-label">FRE</span>
+                                <video src="https://res.cloudinary.com/dt6ig8vhw/video/upload/v1772963971/Captions_4C5B74_s7qtwy.mp4" muted loop playsinline preload="auto"></video>
+                                <div class="portfolio-play-btn"></div>
+                            </div>
+                            <div class="portfolio-item">
+                                <span class="portfolio-item-label">PANTENE</span>
+                                <video src="https://res.cloudinary.com/dt6ig8vhw/video/upload/v1772964042/Captions_5EA0F0_z7yj0w.mp4" muted loop playsinline preload="auto"></video>
+                                <div class="portfolio-play-btn"></div>
+                            </div>
+                            <div class="portfolio-item">
+                                <span class="portfolio-item-label">אריאל</span>
+                                <video src="https://res.cloudinary.com/dt6ig8vhw/video/upload/v1772964096/Captions_543946_n8pcoz.mp4" muted loop playsinline preload="auto"></video>
+                                <div class="portfolio-play-btn"></div>
+                            </div>
+                            <div class="portfolio-item">
+                                <span class="portfolio-item-label">ALWAYS</span>
+                                <video src="https://res.cloudinary.com/dt6ig8vhw/video/upload/v1772964138/Captions_B55096_b26q0e.mp4" muted loop playsinline preload="auto"></video>
+                                <div class="portfolio-play-btn"></div>
+                            </div>
+                            <div class="portfolio-item">
+                                <span class="portfolio-item-label">פאר</span>
+                                <video src="https://res.cloudinary.com/dt6ig8vhw/video/upload/v1772964175/Captions_CC5C4F_quz5wl.mp4" muted loop playsinline preload="auto"></video>
+                                <div class="portfolio-play-btn"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="portfolio-category" data-category="business">
+                    <div class="category-header">
+                        <div class="category-left">
+                            <span class="category-number">02</span>
+                            <div>
+                                <h3 class="category-name">Business</h3>
+                                <p class="category-desc">מותגים ועסקים</p>
+                            </div>
+                        </div>
+                        <div class="category-toggle">
+                            <span class="toggle-line"></span>
+                            <span class="toggle-line toggle-line-v"></span>
+                        </div>
+                    </div>
+                    <div class="category-content">
+                        <div class="portfolio-grid">
+                            <div class="portfolio-item">
+                                <span class="portfolio-item-label">ריקי בוטבול</span>
+                                <video src="https://res.cloudinary.com/dt6ig8vhw/video/upload/v1770061826/v7_opebzi.webm" poster="https://res.cloudinary.com/dt6ig8vhw/video/upload/so_0/v1770061826/v7_opebzi.jpg" muted loop playsinline preload="auto"></video>
+                                <div class="portfolio-play-btn"></div>
+                            </div>
+                            <div class="portfolio-item">
+                                <span class="portfolio-item-label">שבוע האופנה 2025</span>
+                                <video src="https://res.cloudinary.com/dt6ig8vhw/video/upload/v1770061827/v5_uxupqy.webm" poster="https://res.cloudinary.com/dt6ig8vhw/video/upload/so_0/v1770061827/v5_uxupqy.jpg" muted loop playsinline preload="auto"></video>
+                                <div class="portfolio-play-btn"></div>
+                            </div>
+                            <div class="portfolio-item">
+                                <span class="portfolio-item-label">סרטוני אווירה</span>
+                                <video src="https://res.cloudinary.com/dt6ig8vhw/video/upload/v1770061837/v6_ixjlgt.webm" poster="https://res.cloudinary.com/dt6ig8vhw/video/upload/so_0/v1770061837/v6_ixjlgt.jpg" muted loop playsinline preload="auto"></video>
+                                <div class="portfolio-play-btn"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Stills Carousel Section -->
+    <section class="stills-section" id="stills">
+        <div class="stills-carousel-wrapper">
+            <!-- RTL: prev = חץ ימינה (→), next = חץ שמאלה (←) -->
+            <button class="stills-arrow stills-arrow-prev" aria-label="הקודם">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20">
+                    <polyline points="9 18 15 12 9 6"/>
+                </svg>
+            </button>
+
+            <div class="stills-track-container">
+                <div class="stills-track" id="stills-track">
+                    <div class="stills-slide"><img src="s1.webp" alt="סטילס 1"></div>
+                    <div class="stills-slide"><img src="s2.webp" alt="סטילס 2"></div>
+                    <div class="stills-slide"><img src="s3.webp" alt="סטילס 3"></div>
+                    <div class="stills-slide"><img src="s4.webp" alt="סטילס 4"></div>
+                    <div class="stills-slide"><img src="s5.webp" alt="סטילס 5"></div>
+                    <div class="stills-slide"><img src="s6.webp" alt="סטילס 6"></div>
+                    <div class="stills-slide"><img src="s7.webp" alt="סטילס 7"></div>
+                    <div class="stills-slide"><img src="s8.webp" alt="סטילס 8"></div>
+                    <div class="stills-slide"><img src="s9.webp" alt="סטילס 9"></div>
+                    <div class="stills-slide"><img src="s10.webp" alt="סטילס 10"></div>
+                </div>
+            </div>
+
+            <button class="stills-arrow stills-arrow-next" aria-label="הבא">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20">
+                    <polyline points="15 18 9 12 15 6"/>
+                </svg>
+            </button>
+        </div>
+
+        <!-- Dot indicators -->
+        <div class="stills-dots" id="stills-dots"></div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials-section">
+        <div class="container">
+            <h2 class="testimonials-title">What They Say</h2>
+            <p class="testimonials-subtitle">אין צורך במילים, התוצאות וההודעות שאני מקבלת מדברות בעד עצמן</p>
+        </div>
+        <div class="testimonials-masonry">
+            <div class="testimonials-col">
+                <div class="testimonial-item"><img src="w1.webp" alt="המלצה 1"></div>
+                <div class="testimonial-item"><img src="w5.webp" alt="המלצה 5"></div>
+                <div class="testimonial-item"><img src="w9.webp" alt="המלצה 9"></div>
+            </div>
+            <div class="testimonials-col">
+                <div class="testimonial-item"><img src="w2.webp" alt="המלצה 2"></div>
+                <div class="testimonial-item"><img src="w6.webp" alt="המלצה 6"></div>
+                <div class="testimonial-item"><img src="w10.webp" alt="המלצה 10"></div>
+            </div>
+            <div class="testimonials-col">
+                <div class="testimonial-item"><img src="w3.webp" alt="המלצה 3"></div>
+                <div class="testimonial-item"><img src="w7.webp" alt="המלצה 7"></div>
+                <div class="testimonial-item"><img src="w11.webp" alt="המלצה 11"></div>
+            </div>
+            <div class="testimonials-col">
+                <div class="testimonial-item"><img src="w4.webp" alt="המלצה 4"></div>
+                <div class="testimonial-item"><img src="w8.webp" alt="המלצה 8"></div>
+                <div class="testimonial-item"><img src="w12.webp" alt="המלצה 12"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services-section" id="services">
+        <div class="services-bg-text">RD Services</div>
+        <div class="container">
+            <div class="services-header">
+                <span class="services-eyebrow">מה אני מציעה</span>
+                <h2 class="services-title">RD Services</h2>
+            </div>
+            <div class="services-grid">
+
+                <div class="service-card">
+                    <div class="service-card-number">01</div>
+                    <div class="service-card-inner">
+                        <div class="service-icon">
+                            <svg width="32" height="32" viewBox="0 0 48 48" fill="none">
+                                <path d="M24 4L4 14V34L24 44L44 34V14L24 4Z" stroke="currentColor" stroke-width="2" fill="none"/>
+                                <path d="M24 20C26.2091 20 28 18.2091 28 16C28 13.7909 26.2091 12 24 12C21.7909 12 20 13.7909 20 16C20 18.2091 21.7909 20 24 20Z" stroke="currentColor" stroke-width="2"/>
+                                <path d="M16 32C16 27.5817 19.5817 24 24 24C28.4183 24 32 27.5817 32 32" stroke="currentColor" stroke-width="2"/>
+                            </svg>
+                        </div>
+                        <h3 class="service-name">ניהול סושיאל</h3>
+                        <p class="service-description">ניהול שוטף של הנוכחות הדיגיטלית של העסק — יצירת תוכן, תכנון אסטרטגי, כתיבה, עיצוב וקידום ממומן. פיד חי, מעניין וממיר.</p>
+                    </div>
+                    <div class="service-card-glow"></div>
+                </div>
+
+                <div class="service-card service-card--featured">
+                    <div class="service-card-number">02</div>
+                    <div class="service-card-inner">
+                        <div class="service-icon">
+                            <svg width="32" height="32" viewBox="0 0 48 48" fill="none">
+                                <rect x="8" y="8" width="32" height="24" rx="3" stroke="currentColor" stroke-width="2" fill="none"/>
+                                <circle cx="24" cy="20" r="6" stroke="currentColor" stroke-width="2"/>
+                                <path d="M16 36L24 32L32 36" stroke="currentColor" stroke-width="2"/>
+                                <path d="M24 32V40" stroke="currentColor" stroke-width="2"/>
+                            </svg>
+                        </div>
+                        <h3 class="service-name">ימי צילום</h3>
+                        <p class="service-description">יום צילום מקצועי ליצירת תוכן ויזואלי מותאם אישית — תמונות, סרטונים ורילס. הכל בהתאם לשפה ולאופי הייחודי של המותג.</p>
+                    </div>
+                    <div class="service-card-glow"></div>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-card-number">03</div>
+                    <div class="service-card-inner">
+                        <div class="service-icon">
+                            <svg width="32" height="32" viewBox="0 0 48 48" fill="none">
+                                <path d="M12 8H36C38.2091 8 40 9.79086 40 12V36C40 38.2091 38.2091 40 36 40H12C9.79086 40 8 38.2091 8 36V12C8 9.79086 9.79086 8 12 8Z" stroke="currentColor" stroke-width="2" fill="none"/>
+                                <path d="M20 18L28 24L20 30V18Z" stroke="currentColor" stroke-width="2" fill="none"/>
+                            </svg>
+                        </div>
+                        <h3 class="service-name">UGC</h3>
+                        <p class="service-description">תוכן אותנטי שמדמה חוויית שימוש אמיתית — תוכן שהקהל מזהה, סומך עליו ומגיב אליו. מושלם לקמפיינים ולבניית חיבור אמיתי.</p>
+                    </div>
+                    <div class="service-card-glow"></div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Section -->
+    <section class="process-section">
+        <div class="process-bg-text">Workflow</div>
+        <div class="container">
+            <div class="process-header">
+                <span class="process-eyebrow">איך זה עובד</span>
+                <h2 class="process-title">RD Workflow</h2>
+            </div>
+
+            <div class="process-timeline">
+                <div class="process-vline"><div class="process-vline-fill" id="process-vline-fill"></div></div>
+
+                <div class="process-step wf-reveal wf-from-right">
+                    <div class="process-card-empty"></div>
+                    <div class="process-node"><span class="process-node-num">01</span></div>
+                    <div class="process-card">
+                        <h3 class="process-card-title">שיחת היכרות</h3>
+                        <p class="process-card-desc">נכיר את העסק, נבין את הצרכים, קהל היעד, המטרות והחזון של המותג.</p>
+                    </div>
+                </div>
+
+                <div class="process-step wf-reveal wf-from-left">
+                    <div class="process-card">
+                        <h3 class="process-card-title">אסטרטגיית תוכן</h3>
+                        <p class="process-card-desc">גיבוש קונספט, שפה קריאייטיבית, תכנון תוכן ומחקר מתחרים.</p>
+                    </div>
+                    <div class="process-node"><span class="process-node-num">02</span></div>
+                    <div class="process-card-empty"></div>
+                </div>
+
+                <div class="process-step wf-reveal wf-from-right">
+                    <div class="process-card-empty"></div>
+                    <div class="process-node"><span class="process-node-num">03</span></div>
+                    <div class="process-card">
+                        <h3 class="process-card-title">יום צילום</h3>
+                        <p class="process-card-desc">הפקת תוכן ויזואלי מותאם — תמונות, סרטונים ורילס בהתאם לאסטרטגיה.</p>
+                    </div>
+                </div>
+
+                <div class="process-step wf-reveal wf-from-left">
+                    <div class="process-card">
+                        <h3 class="process-card-title">עריכה והעלאה</h3>
+                        <p class="process-card-desc">עריכת החומרים, כתיבת פוסטים, תזמון והעלאה לרשתות החברתיות.</p>
+                    </div>
+                    <div class="process-node"><span class="process-node-num">04</span></div>
+                    <div class="process-card-empty"></div>
+                </div>
+
+                <div class="process-step wf-reveal wf-from-right">
+                    <div class="process-card-empty"></div>
+                    <div class="process-node"><span class="process-node-num">05</span></div>
+                    <div class="process-card">
+                        <h3 class="process-card-title">קידום ואופטימיזציה</h3>
+                        <p class="process-card-desc">ניהול קמפיינים ממומנים, מדידה, שיפור מתמיד ומקסום תוצאות.</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -404,7 +507,7 @@
             <div class="faq-shape faq-shape-3"></div>
         </div>
         <div class="container">
-            <h2 class="faq-title">כל מה שאתם צריכים לדעת</h2>
+            <h2 class="faq-title">Have a Question</h2>
             <p class="faq-subtitle">שאלות נפוצות ותשובות</p>
 
             <div class="faq-grid">
@@ -503,19 +606,38 @@
 
     <!-- Contact Form Section -->
     <section class="contact-section" id="contact">
+        <div class="contact-bg-text">Let's Talk</div>
         <div class="container">
-            <div class="contact-form-wrapper">
-                <h2 class="contact-title">אם אתם רוצים בלה בלה בלה</h2>
-                <p class="contact-subtitle">זה הזמן לעשות מהפך בסושיאל!</p>
-                <form class="contact-form">
-                    <input type="text" name="name" placeholder="שם" required>
-                    <input type="tel" name="phone" placeholder="טלפון" required>
-                    <input type="email" name="email" placeholder="אימייל" required>
-                    <button type="submit" class="cta-button cta-brown">
-                        שליחה
-                        <span class="arrow">»</span>
-                    </button>
-                </form>
+            <div class="contact-layout">
+
+                <!-- Left: text side -->
+                <div class="contact-info">
+                    <span class="contact-eyebrow">צרו קשר</span>
+                    <h2 class="contact-title">Let's Talk!</h2>
+                    <p class="contact-desc">מוכנים להפוך את העסק שלכם למותג?<br>השאירו פרטים ואחזור אליכם בהקדם.</p>
+                </div>
+
+                <!-- Right: form -->
+                <div class="contact-form-wrapper">
+                    <form class="contact-form">
+                        <div class="contact-input-group">
+                            <input type="text" name="name" placeholder="שם מלא" required>
+                        </div>
+                        <div class="contact-input-group">
+                            <input type="tel" name="phone" placeholder="טלפון" required>
+                        </div>
+                        <div class="contact-input-group">
+                            <input type="email" name="email" placeholder="אימייל" required>
+                        </div>
+                        <button type="submit" class="contact-submit">
+                            <span>שליחה</span>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18">
+                                <path d="M5 12h14M12 5l7 7-7 7"/>
+                            </svg>
+                        </button>
+                    </form>
+                </div>
+
             </div>
         </div>
     </section>
