@@ -1165,9 +1165,13 @@ body {
     .services-bg-text {
         font-size: 3.5rem;
         top: 30px;
+        left: 0;
+        right: 0;
+        transform: none;
         white-space: normal;
         text-align: center;
-        width: 90%;
+        width: 100%;
+        padding: 0 16px;
     }
 }
 
