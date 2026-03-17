@@ -590,6 +590,12 @@
                         <div class="contact-input-group">
                             <input type="email" name="email" placeholder="אימייל" required>
                         </div>
+                        <div class="contact-privacy-check">
+                            <label class="privacy-label">
+                                <input type="checkbox" id="privacy-consent" required>
+                                <span>קראתי ואני מסכים/ה ל<a href="privacy.html" target="_blank">מדיניות הפרטיות</a> ולקבלת פניות חוזרות</span>
+                            </label>
+                        </div>
                         <button type="submit" class="contact-submit">
                             <span>שליחה</span>
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18">
@@ -602,6 +608,30 @@
             </div>
         </div>
     </section>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="footer-inner">
+            <span class="footer-credit">נבנה על-ידי <a href="https://mtcore.co.il" target="_blank" rel="noopener">MTCORE</a> פתרונות דיגיטליים</span>
+            <span class="footer-sep">|</span>
+            <a href="accessibility.html" target="_blank" class="footer-link">הצהרת נגישות</a>
+            <span class="footer-sep">|</span>
+            <a href="privacy.html" target="_blank" class="footer-link">מדיניות פרטיות</a>
+        </div>
+    </footer>
+
+    <!-- Cookies Popup -->
+    <div class="cookies-banner" id="cookiesBanner" role="dialog" aria-label="הסכמה לעוגיות" aria-modal="true">
+        <div class="cookies-content">
+            <p class="cookies-text">
+                אתר זה משתמש בעוגיות (Cookies) לצורך שיפור חוויית הגלישה, ניתוח תנועה וצרכים תפעוליים, בהתאם ל<a href="privacy.html" target="_blank">מדיניות הפרטיות</a> שלנו ולחוק הגנת הפרטיות הישראלי. לחיצה על "אני מסכים/ה" מהווה הסכמה לשימוש בעוגיות שאינן הכרחיות.
+            </p>
+            <div class="cookies-actions">
+                <button class="cookies-btn cookies-btn-accept" id="cookiesAccept">אני מסכים/ה</button>
+                <button class="cookies-btn cookies-btn-decline" id="cookiesDecline">עוגיות הכרחיות בלבד</button>
+            </div>
+        </div>
+    </div>
 
     <script src="script.js"></script>
 </body>

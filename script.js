@@ -383,3 +383,35 @@ navHamburger.addEventListener('click', () => {
         updateVline();
     }
 })();
+
+// ===== COOKIES BANNER =====
+(function() {
+    const banner = document.getElementById('cookiesBanner');
+    const acceptBtn = document.getElementById('cookiesAccept');
+    const declineBtn = document.getElementById('cookiesDecline');
+    if (!banner) return;
+
+    const COOKIE_KEY = 'rd_cookie_consent';
+
+    function setCookie(value) {
+        const d = new Date();
+        d.setFullYear(d.getFullYear() + 1);
+        document.cookie = COOKIE_KEY + '=' + value + '; expires=' + d.toUTCString() + '; path=/; SameSite=Lax';
+    }
+    function getCookie() {
+        return document.cookie.split(';').some(c => c.trim().startsWith(COOKIE_KEY + '='));
+    }
+
+    if (!getCookie()) {
+        setTimeout(() => banner.classList.add('visible'), 1200);
+    }
+
+    acceptBtn.addEventListener('click', function() {
+        setCookie('all');
+        banner.classList.remove('visible');
+    });
+    declineBtn.addEventListener('click', function() {
+        setCookie('essential');
+        banner.classList.remove('visible');
+    });
+})();
