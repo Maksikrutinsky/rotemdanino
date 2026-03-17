@@ -1385,13 +1385,17 @@ body {
         max-width: 480px;
     }
     .services-bg-text {
-        font-size: 8rem;
+        font-size: 3rem;
+        overflow: hidden;
     }
 }
 
 @media (max-width: 600px) {
     .services-section {
         padding: 60px 0;
+    }
+    .services-bg-text {
+        font-size: 2.4rem;
     }
     .services-title {
         font-size: 3rem;
