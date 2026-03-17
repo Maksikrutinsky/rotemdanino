@@ -1160,7 +1160,7 @@ body {
     transform: translateX(-50%);
     font-family: 'Playfair Display', serif;
     font-style: italic;
-    font-size: 9rem;
+    font-size: 7rem;
     color: rgba(174,36,75,0.06);
     white-space: nowrap;
     pointer-events: none;
@@ -2669,13 +2669,13 @@ body {
 /* Responsive */
 @media (max-width: 768px) {
     .stills-slide {
-        flex: 0 0 calc(80% - 8px);
+        flex: 0 0 100%;
     }
     .stills-arrow {
         display: none;
     }
     .stills-track-container {
-        padding: 0 20px;
+        padding: 0;
     }
     .stills-title {
         font-size: 1.5rem;

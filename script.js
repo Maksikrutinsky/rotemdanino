@@ -262,6 +262,7 @@ navHamburger.addEventListener('click', () => {
 
     function getSlideWidth() {
         const container = track.parentElement;
+        if (slidesVisible === 1) return container.offsetWidth;
         const gap = 16;
         return (container.offsetWidth - gap * (slidesVisible - 1)) / slidesVisible + gap;
     }
