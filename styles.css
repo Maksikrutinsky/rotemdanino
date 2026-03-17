@@ -172,6 +172,7 @@ body {
     justify-content: center;
 }
 
+
 .image-frame {
     width: 100%;
     max-width: 420px;
@@ -2294,7 +2295,7 @@ body {
    ======================================== */
 /* ===== CONTACT SECTION ===== */
 .contact-section {
-    background: linear-gradient(160deg, var(--brown-dark) 0%, #3d3028 60%, var(--brown-dark) 100%);
+    background: linear-gradient(160deg, var(--cream-light) 0%, var(--cream) 60%, var(--cream-light) 100%);
     padding: 120px 0 120px;
     position: relative;
     overflow: hidden;
@@ -2303,12 +2304,12 @@ body {
 /* Watermark */
 .contact-bg-text {
     position: absolute;
-    top: 0;
+    top: 30%;
     left: 50%;
     transform: translateX(-50%);
     font-family: 'Great Vibes', cursive;
     font-size: 13rem;
-    color: rgba(255,255,255,0.04);
+    color: rgba(174, 36, 75, 0.07);
     white-space: nowrap;
     pointer-events: none;
     line-height: 1;
@@ -2343,7 +2344,7 @@ body {
     font-weight: 500;
     letter-spacing: 3px;
     text-transform: uppercase;
-    color: rgba(184, 160, 137, 0.8);
+    color: var(--brown-medium);
     margin-bottom: 14px;
 }
 
@@ -2351,7 +2352,7 @@ body {
     font-family: 'Great Vibes', cursive;
     font-size: 5rem;
     font-weight: 400;
-    color: #fff;
+    color: var(--text-dark);
     line-height: 1.1;
     margin-bottom: 20px;
     letter-spacing: 0;
@@ -2361,7 +2362,7 @@ body {
     font-family: 'Assistant', sans-serif;
     font-size: 1rem;
     line-height: 1.8;
-    color: rgba(255,255,255,0.6);
+    color: var(--text-medium);
     margin-bottom: 36px;
 }
 
@@ -2376,7 +2377,7 @@ body {
     display: inline-flex;
     align-items: center;
     gap: 12px;
-    color: rgba(255,255,255,0.7);
+    color: var(--text-medium);
     text-decoration: none;
     font-family: 'Assistant', sans-serif;
     font-size: 0.9rem;
@@ -2385,20 +2386,20 @@ body {
     width: fit-content;
 }
 .contact-detail-item:hover {
-    color: var(--brown-soft);
+    color: var(--rose);
 }
 .contact-detail-item svg {
     flex-shrink: 0;
-    opacity: 0.8;
+    opacity: 0.7;
 }
 
 /* Form side */
 .contact-form-wrapper {
-    background: rgba(255,255,255,0.05);
-    border: 1px solid rgba(184, 160, 137, 0.2);
+    background: var(--white);
+    border: 1px solid rgba(184, 160, 137, 0.25);
     border-radius: 28px;
     padding: 40px 36px;
-    backdrop-filter: blur(10px);
+    box-shadow: 0 8px 40px rgba(139, 115, 85, 0.08);
 }
 
 .contact-form {
@@ -2416,23 +2417,23 @@ body {
     padding: 16px 20px;
     font-size: 0.95rem;
     font-family: 'Assistant', sans-serif;
-    border: 1px solid rgba(184, 160, 137, 0.2);
+    border: 1px solid rgba(184, 160, 137, 0.3);
     border-radius: 14px;
-    background: rgba(255,255,255,0.06);
-    color: #fff;
+    background: var(--cream-light);
+    color: var(--text-dark);
     transition: all 0.3s ease;
     direction: rtl;
 }
 
 .contact-form input::placeholder {
-    color: rgba(184, 160, 137, 0.5);
+    color: var(--brown-light);
 }
 
 .contact-form input:focus {
     outline: none;
-    border-color: rgba(184, 160, 137, 0.6);
-    background: rgba(255,255,255,0.09);
-    box-shadow: 0 0 0 3px rgba(184, 160, 137, 0.1);
+    border-color: rgba(174, 36, 75, 0.3);
+    background: var(--white);
+    box-shadow: 0 0 0 3px rgba(174, 36, 75, 0.06);
 }
 
 .contact-form input[type="tel"] {
@@ -2449,10 +2450,10 @@ body {
     width: 100%;
     padding: 16px 28px;
     margin-top: 6px;
-    background: linear-gradient(135deg, var(--brown-light), var(--brown-medium));
-    border: none;
+    background: rgba(174, 36, 75, 0.07);
+    border: 1px solid rgba(174, 36, 75, 0.2);
     border-radius: 14px;
-    color: #fff;
+    color: var(--rose);
     font-family: 'Assistant', sans-serif;
     font-size: 1rem;
     font-weight: 600;
@@ -2466,13 +2467,13 @@ body {
     content: '';
     position: absolute;
     inset: 0;
-    background: linear-gradient(135deg, var(--brown-medium), var(--brown-dark));
+    background: rgba(0,0,0,0.1);
     opacity: 0;
     transition: opacity 0.3s ease;
 }
 .contact-submit:hover {
     transform: translateY(-2px);
-    box-shadow: 0 12px 40px rgba(139, 115, 85, 0.4);
+    box-shadow: 0 12px 40px rgba(174, 36, 75, 0.12);
 }
 .contact-submit:hover::before {
     opacity: 1;
