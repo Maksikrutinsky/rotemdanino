@@ -1743,13 +1743,13 @@ body {
         gap: 10px;
     }
 
-    .testimonials-col:nth-child(3),
-    .testimonials-col:nth-child(4) {
-        display: none;
-    }
-
     .testimonials-col:nth-child(2) {
         margin-top: 20px;
+    }
+
+    .testimonials-col:nth-child(3),
+    .testimonials-col:nth-child(4) {
+        margin-top: 0;
     }
 }
 
@@ -1767,12 +1767,20 @@ body {
     }
 
     .testimonials-masonry {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
         gap: 8px;
         padding: 0 16px;
+        align-items: start;
     }
 
     .testimonials-col {
         gap: 8px;
+        margin-top: 0 !important;
+    }
+
+    .testimonials-col:nth-child(2) {
+        margin-top: 20px !important;
     }
 }
 
