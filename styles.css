@@ -151,7 +151,7 @@ body {
 }
 
 .hero-title-accent {
-    color: var(--brown-medium);
+    color: var(--brown-light);
 }
 
 /* Hero Description */
@@ -202,21 +202,21 @@ body {
     font-size: 1.1rem;
     font-weight: 700;
     font-family: 'Assistant', sans-serif;
-    color: var(--white);
-    background: linear-gradient(180deg, var(--brown-light) 0%, var(--brown-medium) 100%);
+    color: var(--brown-dark);
+    background: linear-gradient(180deg, var(--brown-soft) 0%, var(--brown-light) 100%);
     border: none;
     border-radius: 100px;
     text-decoration: none;
     cursor: pointer;
     transition: all 0.3s ease;
-    box-shadow: 0 4px 15px rgba(139, 115, 85, 0.3);
+    box-shadow: 0 4px 15px rgba(139, 115, 85, 0.18);
     position: relative;
 }
 
 .cta-button:hover {
     transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(139, 115, 85, 0.4);
-    background: linear-gradient(180deg, var(--brown-medium) 0%, var(--brown-dark) 100%);
+    box-shadow: 0 6px 20px rgba(139, 115, 85, 0.25);
+    background: linear-gradient(180deg, var(--brown-light) 0%, var(--brown-medium) 100%);
 }
 
 .cta-button:active {
