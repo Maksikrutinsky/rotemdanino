@@ -337,26 +337,33 @@ body {
 
 /* ===== כפתור סושיאל — שקוף עם מסגרת חום ===== */
 .cta-social {
-    background: transparent;
-    border: 1.5px solid var(--brown-light);
+    background: rgba(174, 36, 75, 0.72);
+    border: 1px solid rgba(174, 36, 75, 0.3);
     border-radius: 100px;
-    padding: 13px 28px;
-    gap: 14px;                    /* רווח בין טקסט לאייקון */
+    padding: 13px 30px;
+    gap: 14px;
     position: relative;
     overflow: hidden;
-    box-shadow: none;
-    color: var(--text-dark);
-    transition: all 0.3s ease;
+    box-shadow: 0 3px 14px rgba(174, 36, 75, 0.18);
+    color: #ffffff;
+    transition: all 0.35s ease;
 }
 
-.cta-social::before { display: none; }
+.cta-social::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(160deg, rgba(255,255,255,0.08) 0%, transparent 50%);
+    border-radius: inherit;
+    pointer-events: none;
+}
 
 .cta-social__text {
-    font-family: 'Playfair Display', serif;
-    font-style: italic;
+    font-family: 'Frank Ruhl Libre', serif;
+    font-style: normal;
     font-weight: 400;
     font-size: 1.05rem;
-    color: var(--text-dark);
+    color: #ffffff;
     letter-spacing: 0.3px;
     background: none;
     padding: 0;
@@ -368,22 +375,21 @@ body {
     position: static;
     transform: none;
     font-size: 1rem;
-    color: var(--rose);
-    animation: pulse-star 2.5s ease-in-out infinite;
+    color: rgba(255,255,255,0.85);
+    animation: pulse-star 3s ease-in-out infinite;
     line-height: 1;
     flex-shrink: 0;
 }
 
 @keyframes pulse-star {
-    0%, 100% { transform: scale(1) rotate(0deg); opacity: 1; }
-    50%       { transform: scale(1.4) rotate(72deg); opacity: 0.8; }
+    0%, 100% { transform: scale(1) rotate(0deg); opacity: 0.85; }
+    50%       { transform: scale(1.3) rotate(72deg); opacity: 1; }
 }
 
 .cta-social:hover {
-    background: rgba(184, 160, 137, 0.08);
-    border-color: var(--brown-medium);
+    background: rgba(174, 36, 75, 0.88);
     transform: translateY(-2px);
-    box-shadow: 0 4px 16px rgba(139, 115, 85, 0.18);
+    box-shadow: 0 6px 20px rgba(174, 36, 75, 0.28);
 }
 
 /* Brown CTA Button Variant */
