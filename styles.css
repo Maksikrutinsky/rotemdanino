@@ -158,13 +158,14 @@ body {
 /* Hero Title */
 .hero-title {
     font-family: 'Playfair Display', 'Assistant', serif;
-    font-size: 3.4rem;
-    font-weight: 400;
+    font-size: 3.8rem;
+    font-weight: 700;
     font-style: italic;
-    line-height: 1.25;
+    line-height: 1.2;
     margin-bottom: 24px;
     color: var(--text-dark);
-    letter-spacing: 0.01em;
+    letter-spacing: -0.01em;
+    text-shadow: 0 2px 12px rgba(0,0,0,0.07);
 }
 
 .hero-title-accent {
@@ -452,7 +453,7 @@ body {
     /* הסתר כפתור בטקסט בנייד */
     .hero-text .cta-button { display: none !important; }
 
-    .hero-title { font-size: 2.5rem; }
+    .hero-title { font-size: 2.7rem; font-weight: 700; }
     .hero-description { font-size: 1.15rem; margin-bottom: 0; }
 
     /* תמונה קטנה יותר בנייד */
@@ -475,7 +476,7 @@ body {
         font-size: 0.88rem;
         padding: 11px 16px;
     }
-    .hero-title { font-size: 2.1rem; }
+    .hero-title { font-size: 2.3rem; font-weight: 700; }
     .hero-float-img { max-width: 110vw; margin-left: -5vw; }
 }
 
