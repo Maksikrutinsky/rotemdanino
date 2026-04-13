@@ -170,20 +170,21 @@ body {
 .hero-title-accent {
     font-size: 1.15em;
     white-space: nowrap;
-    background: linear-gradient(100deg, #5c4a3d 0%, #b8a089 40%, #8b7355 70%, #3d2e24 100%);
-    background-size: 250% auto;
+    background: linear-gradient(100deg, #d4c4b0 0%, #b8a089 30%, #e8ddd0 55%, #c4a882 75%, #d4c4b0 100%);
+    background-size: 300% auto;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
     display: inline-block;
-    padding-right: 0.08em;   /* מונע חיתוך אותיות בקצה */
+    padding-right: 0.08em;
     overflow: visible;
-    animation: accentShimmer 5s linear infinite;
+    animation: accentShimmer 10s ease-in-out infinite;
 }
 
 @keyframes accentShimmer {
     0%   { background-position: 0% center; }
-    100% { background-position: 250% center; }
+    50%  { background-position: 150% center; }
+    100% { background-position: 300% center; }
 }
 
 /* Hero Description */
