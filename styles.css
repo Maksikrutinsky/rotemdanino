@@ -169,9 +169,13 @@ body {
 }
 
 .hero-title-accent {
-    color: var(--brown-light);
     font-style: italic;
     white-space: nowrap;   /* למותג בסושיאל — תמיד בשורה אחת */
+    background: linear-gradient(90deg, var(--brown-medium) 0%, var(--brown-light) 40%, var(--rose) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    display: inline-block;
 }
 
 /* Hero Description */
