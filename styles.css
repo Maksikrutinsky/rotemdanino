@@ -457,7 +457,7 @@ body {
     }
     .hero-image-col {
         order: 3;
-        margin-top: 0px;            /* תמונה במקום רגיל */
+        margin-top: -28px;          /* תמונה מעט למעלה */
         overflow: visible;
         border: none !important;
         background: none !important;
@@ -468,6 +468,7 @@ body {
     .hero-text .cta-button { display: none !important; }
 
     .hero-title { font-size: 2.7rem; font-weight: 900; }
+    .hero-title-main { font-size: 0.78em; }
     .hero-description { font-size: 1.15rem; margin-bottom: 0; }
 
     /* תמונה קטנה יותר בנייד */
