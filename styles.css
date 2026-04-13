@@ -80,7 +80,7 @@ body {
     align-items: flex-start;
     justify-content: center;
     padding: 10px 0 0;
-    background: linear-gradient(160deg, #fdfcfa 0%, #f5ede3 40%, #faf4ee 70%, #fdfcfa 100%);
+    background: linear-gradient(160deg, #fdfcfa 0%, #faf5f0 40%, #fdfaf7 70%, #fdfcfa 100%);
     position: relative;
     overflow: clip;
 }
@@ -289,6 +289,7 @@ body {
     margin-top: 0;
     position: relative;
     z-index: 3;
+    margin-left: 32px;
 }
 
 /* CTA Button */
