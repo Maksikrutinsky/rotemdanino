@@ -289,7 +289,9 @@ body {
     margin-top: 0;
     position: relative;
     z-index: 3;
-    margin-left: 120px;
+    display: flex;
+    justify-content: flex-start;
+    margin-left: 0;
 }
 
 /* CTA Button */
