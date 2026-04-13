@@ -157,34 +157,33 @@ body {
 
 /* Hero Title */
 .hero-title {
-    font-family: 'Playfair Display', 'Assistant', serif;
+    font-family: 'Frank Ruhl Libre', serif;
     font-size: 3.8rem;
-    font-weight: 700;
-    font-style: italic;
+    font-weight: 900;
+    font-style: normal;
     line-height: 1.2;
     margin-bottom: 24px;
     color: var(--text-dark);
-    letter-spacing: -0.01em;
-    text-shadow: 0 2px 12px rgba(0,0,0,0.07);
+    letter-spacing: 0.01em;
 }
 
 .hero-title-accent {
-    font-style: italic;
-    font-size: 1.18em;
+    font-size: 1.15em;
     white-space: nowrap;
-    background: linear-gradient(100deg, #8b7355 0%, #AE244B 45%, #c4506a 70%, #8b7355 100%);
-    background-size: 200% auto;
+    background: linear-gradient(100deg, #5c4a3d 0%, #b8a089 40%, #8b7355 70%, #3d2e24 100%);
+    background-size: 250% auto;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
     display: inline-block;
-    animation: accentShimmer 4s linear infinite;
-    filter: drop-shadow(0 2px 8px rgba(174,36,75,0.18));
+    padding-right: 0.08em;   /* מונע חיתוך אותיות בקצה */
+    overflow: visible;
+    animation: accentShimmer 5s linear infinite;
 }
 
 @keyframes accentShimmer {
     0%   { background-position: 0% center; }
-    100% { background-position: 200% center; }
+    100% { background-position: 250% center; }
 }
 
 /* Hero Description */
@@ -468,7 +467,7 @@ body {
     /* הסתר כפתור בטקסט בנייד */
     .hero-text .cta-button { display: none !important; }
 
-    .hero-title { font-size: 2.7rem; font-weight: 700; }
+    .hero-title { font-size: 2.7rem; font-weight: 900; }
     .hero-description { font-size: 1.15rem; margin-bottom: 0; }
 
     /* תמונה קטנה יותר בנייד */
@@ -491,7 +490,7 @@ body {
         font-size: 0.88rem;
         padding: 11px 16px;
     }
-    .hero-title { font-size: 2.3rem; font-weight: 700; }
+    .hero-title { font-size: 2.3rem; font-weight: 900; }
     .hero-float-img { max-width: 110vw; margin-left: -5vw; }
 }
 
