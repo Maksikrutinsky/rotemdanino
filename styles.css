@@ -167,6 +167,10 @@ body {
     letter-spacing: 0.01em;
 }
 
+.hero-title-main {
+    font-size: 0.75em;
+}
+
 .hero-title-accent {
     font-size: 1.15em;
     white-space: nowrap;
@@ -458,7 +462,7 @@ body {
     }
     .hero-image-col {
         order: 3;
-        margin-top: -28px;          /* תמונה מעט למעלה */
+        margin-top: -48px;          /* תמונה למעלה */
         overflow: visible;
         border: none !important;
         background: none !important;
