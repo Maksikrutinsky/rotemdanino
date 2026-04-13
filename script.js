@@ -1,3 +1,81 @@
+// Animated logo bubbles — around the image column only, no clipping
+(function() {
+    const logos = [
+        'logo1.webp','logo2.png','logo3.webp','logo4.webp','logo5.webp',
+        'logo6.webp','logo7.webp','logo8.webp','logo9.webp','logo10.webp',
+        'logo11.webp','logo12.webp','logo13.webp','logo14.webp','logo15.webp'
+    ];
+
+    const container = document.getElementById('logoBubbles');
+    if (!container) return;
+
+    const isMobile = window.innerWidth < 968;
+
+    // זונות — בטוחות ולא נחתכות
+    // דסקטופ: סביב התמונה בשוליים
+    // נייד: פנימי יותר כי הקולאום צר
+    const desktopZones = [
+        // שמאל
+        { x: [3,  17], y: [8,  28] },
+        { x: [3,  17], y: [33, 57] },
+        { x: [3,  17], y: [58, 72] },  // לא יותר מ-72% — מעל אזור המעבר
+        // ימין
+        { x: [78, 94], y: [8,  28] },
+        { x: [78, 94], y: [33, 57] },
+        { x: [78, 94], y: [58, 72] },
+        // למעלה בלבד — ללא שורה תחתונה
+        { x: [22, 46], y: [3,  12] },
+        { x: [52, 76], y: [3,  12] },
+    ];
+
+    const mobileZones = [
+        // שמאל — מתחיל מ-30% כדי לא לחפוף לכפתור
+        { x: [8,  22], y: [30, 50] },
+        { x: [8,  22], y: [54, 70] },
+        // ימין
+        { x: [74, 88], y: [30, 50] },
+        { x: [74, 88], y: [54, 70] },
+        // אמצע — רק למטה
+        { x: [30, 50], y: [75, 88] },
+        { x: [50, 70], y: [75, 88] },
+    ];
+
+    const zones = isMobile ? mobileZones : desktopZones;
+
+    const totalBubbles = zones.length;
+    const visibleTime  = isMobile ? 1.8 : 2.6;
+    const cycleDur     = visibleTime * totalBubbles;
+
+    const shuffled = [...logos].sort(() => Math.random() - 0.5);
+
+    zones.forEach((zone, i) => {
+        const logo = shuffled[i % logos.length];
+        const x    = zone.x[0] + Math.random() * (zone.x[1] - zone.x[0]);
+        const y    = zone.y[0] + Math.random() * (zone.y[1] - zone.y[0]);
+        const size = isMobile
+            ? 22 + Math.floor(Math.random() * 12)   // 22–33px נייד
+            : 28 + Math.floor(Math.random() * 16);  // 28–43px דסקטופ — קטן יותר
+        const rot  = (Math.random() * 12 - 6).toFixed(1);
+
+        const bubble = document.createElement('div');
+        bubble.className = 'logo-bubble';
+        bubble.style.cssText = `
+            left: ${x}%;
+            top:  ${y}%;
+            --dur:   ${cycleDur}s;
+            --delay: ${(-i / totalBubbles * cycleDur).toFixed(2)}s;
+            --size:  ${size}px;
+            --rot:   ${rot}deg;
+        `;
+
+        const img = document.createElement('img');
+        img.src = logo;
+        img.alt = '';
+        bubble.appendChild(img);
+        container.appendChild(bubble);
+    });
+})();
+
 // Clean parallax effect on scroll
 document.addEventListener('DOMContentLoaded', function() {
     const parallaxBg = document.querySelector('.parallax-bg');

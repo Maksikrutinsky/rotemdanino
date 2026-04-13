@@ -76,14 +76,26 @@ body {
 
 /* Hero Section */
 .hero-section {
-    min-height: 100vh;
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     justify-content: center;
-    padding: 120px 0 100px;
+    padding: 10px 0 0;
     background: var(--cream-white);
     position: relative;
-    overflow: hidden;
+    overflow: clip;
+}
+
+/* מעבר בין חלק ראשון לשני — גם מחשב וגם נייד */
+.hero-section::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 90px;
+    background: linear-gradient(to bottom, transparent 0%, var(--cream) 100%);
+    pointer-events: none;
+    z-index: 5;
 }
 
 /* Watermark */
@@ -114,6 +126,7 @@ body {
     border-radius: 100px;
     background: rgba(174,36,75,0.05);
     margin-bottom: 28px;
+    margin-top: -20px;   /* עולה מעלה בדסקטופ */
     line-height: 1.5;
     position: relative;
     z-index: 1;
@@ -124,15 +137,18 @@ body {
 
 .hero-content {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 60px;
-    align-items: center;
+    grid-template-columns: 1.5fr 1fr;
+    gap: 40px;
+    align-items: start;      /* טקסט ותמונה מיושרים לראש */
     width: 100%;
     position: relative;
     z-index: 1;
+    direction: ltr;           /* תמונה שמאל, טקסט ימין */
 }
 
+/* החזרת כיוון RTL לתוך הטקסט */
 .hero-text {
+    direction: rtl;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -141,55 +157,119 @@ body {
 
 /* Hero Title */
 .hero-title {
-    font-family: 'Assistant', sans-serif;
+    font-family: 'Playfair Display', 'Assistant', serif;
     font-size: 3.4rem;
-    font-weight: 800;
-    line-height: 1.2;
+    font-weight: 400;
+    font-style: italic;
+    line-height: 1.25;
     margin-bottom: 24px;
     color: var(--text-dark);
-    letter-spacing: -0.01em;
+    letter-spacing: 0.01em;
 }
 
 .hero-title-accent {
     color: var(--brown-light);
+    font-style: italic;
+    white-space: nowrap;   /* למותג בסושיאל — תמיד בשורה אחת */
 }
 
 /* Hero Description */
 .hero-description {
-    font-size: 1.1rem;
+    font-family: 'Caveat', cursive;
+    font-size: 1.3rem;
     font-weight: 500;
-    letter-spacing: 1.5px;
-    text-transform: uppercase;
+    letter-spacing: 0.3px;
+    text-transform: none;
     color: var(--text-medium);
     margin-bottom: 36px;
-    line-height: 1.8;
+    line-height: 1.6;
     max-width: 500px;
 }
 
-/* Hero Image */
-.hero-image {
+/* Hero Image Column */
+.hero-image-col {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+    position: relative;
+}
+
+/* כפתור נייד — מחוץ לגריד בדסקטופ (position absolute כדי לא לתפוס מקום) */
+.hero-cta--mobile-btn {
+    display: none !important;
+    position: absolute;
+    left: -9999px;
+}
+
+/* Logo bubbles — inside image column */
+.logo-bubbles {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    overflow: visible;
+}
+
+.logo-bubble {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* מסגרת בצבעי האתר — רקע קרם/חום + בורדר ורוד */
+    background: linear-gradient(135deg, var(--cream-white) 0%, var(--cream) 100%);
+    border: 1.5px solid var(--rose);
+    border-radius: 10px;
+    padding: 6px 9px;
+    box-shadow:
+        0 3px 14px rgba(174,36,75,0.13),
+        inset 0 1px 0 rgba(255,255,255,0.8);
+    opacity: 0;
+    transform: scale(0.65) rotate(var(--rot, 0deg));
+    animation: bubblePop var(--dur) ease-in-out var(--delay) infinite;
+}
+
+.logo-bubble img {
+    width: var(--size);
+    height: var(--size);
+    object-fit: contain;
+}
+
+@keyframes bubblePop {
+    0%   { opacity: 0;    transform: scale(0.5)  rotate(var(--rot, 0deg)); }
+    8%   { opacity: 0.88; transform: scale(1.08) rotate(var(--rot, 0deg)); }
+    14%  { opacity: 0.88; transform: scale(1)    rotate(var(--rot, 0deg)); }
+    68%  { opacity: 0.88; transform: scale(1)    rotate(var(--rot, 0deg)); }
+    80%  { opacity: 0;    transform: scale(0.7)  rotate(var(--rot, 0deg)); }
+    100% { opacity: 0;    transform: scale(0.5)  rotate(var(--rot, 0deg)); }
+}
+
+/* Floating image wrapper — ללא אנימציה */
+.hero-float-wrap {
+    position: relative;
     display: flex;
     justify-content: center;
+    z-index: 1;
 }
 
-
-.image-frame {
+/* The image itself — כמו שהיא, ללא אפקטים */
+.hero-float-img {
     width: 100%;
-    max-width: 420px;
-    transition: transform 0.6s ease;
-    border-radius: 60% 60% 50% 50% / 40% 40% 36% 36%;
-    background: rgba(174,36,75,0.08);
-    box-shadow: 0 16px 56px rgba(139, 115, 85, 0.22), 0 2px 8px rgba(139, 115, 85, 0.10);
-    overflow: hidden;
-}
-.image-frame:hover {
-    transform: translateY(-6px);
-}
-
-.image-frame img {
-    width: 100%;
+    max-width: 560px;
     height: auto;
     display: block;
+    position: relative;
+    z-index: 1;
+}
+
+
+
+
+/* CTA below image */
+.hero-cta {
+    margin-top: 0;
+    position: relative;
+    z-index: 3;
 }
 
 /* CTA Button */
@@ -233,6 +313,57 @@ body {
     transform: translateX(-4px);
 }
 
+/* ===== כפתור סושיאל — שקוף עם מסגרת חום ===== */
+.cta-social {
+    background: transparent;
+    border: 1.5px solid var(--brown-light);
+    border-radius: 100px;
+    padding: 13px 28px;
+    gap: 14px;                    /* רווח בין טקסט לאייקון */
+    position: relative;
+    overflow: hidden;
+    box-shadow: none;
+    color: var(--text-dark);
+    transition: all 0.3s ease;
+}
+
+.cta-social::before { display: none; }
+
+.cta-social__text {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-weight: 400;
+    font-size: 1.05rem;
+    color: var(--text-dark);
+    letter-spacing: 0.3px;
+    background: none;
+    padding: 0;
+    border-radius: 0;
+    white-space: nowrap;
+}
+
+.cta-social__icon {
+    position: static;
+    transform: none;
+    font-size: 1rem;
+    color: var(--rose);
+    animation: pulse-star 2.5s ease-in-out infinite;
+    line-height: 1;
+    flex-shrink: 0;
+}
+
+@keyframes pulse-star {
+    0%, 100% { transform: scale(1) rotate(0deg); opacity: 1; }
+    50%       { transform: scale(1.4) rotate(72deg); opacity: 0.8; }
+}
+
+.cta-social:hover {
+    background: rgba(184, 160, 137, 0.08);
+    border-color: var(--brown-medium);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 16px rgba(139, 115, 85, 0.18);
+}
+
 /* Brown CTA Button Variant */
 .cta-button.cta-brown {
     background: linear-gradient(180deg, var(--brown-medium) 0%, var(--brown-dark) 100%);
@@ -249,14 +380,30 @@ body {
     box-shadow: 0 2px 10px rgba(92, 74, 61, 0.3);
 }
 
-/* Responsive Design */
+/* ================================================
+   DESKTOP ONLY — כפתור בתוך הטקסט בלבד
+   ================================================ */
+@media (min-width: 969px) {
+    .hero-text .cta-button { display: inline-flex; }
+    .hero-section { padding-top: 80px; padding-bottom: 0; min-height: auto; }
+    .hero-image-col { margin-top: -20px; }
+    .hero-text { padding-top: 60px; }
+    .hero-float-img { max-width: 380px; }
+    .hero-content { gap: 60px; }
+}
+
+/* ================================================
+   MOBILE (≤968px) — סדר: טקסט → כפתור → תמונה
+   ================================================ */
 @media (max-width: 968px) {
     .hero-section {
-        padding: 80px 0;
+        padding: 15px 0 0;
+        align-items: flex-start;
     }
+    .hero-badge { margin-top: 0; }
+
 
     .hero-badge {
-        display: block;
         text-align: center;
         margin-left: auto;
         margin-right: auto;
@@ -264,61 +411,72 @@ body {
 
     .hero-content {
         grid-template-columns: 1fr;
-        text-align: center;
+        direction: rtl;
+        gap: 0;
     }
 
+    /* סדר נייד */
     .hero-text {
+        order: 1;
         align-items: center;
         text-align: center;
+        direction: rtl;
+        padding-top: 0;
+        padding-bottom: 16px;
+    }
+    .hero-cta--mobile-btn {
         order: 2;
-    }
-
-    .hero-image {
-        order: 1;
-        margin-bottom: 0;
-    }
-
-    .hero-title {
-        font-size: 3rem;
-    }
-
-    .hero-description {
-        font-size: 1.15rem;
-    }
-
-    .image-frame {
-        max-width: 320px;
-        width: 100%;
-    }
-
-    .cta-button {
-        padding: 12px 28px;
+        display: flex !important;
+        position: static !important;
+        left: auto !important;
+        margin-left: auto;
+        margin-right: auto;
+        transform: translateX(-4%);
+        width: 82%;                  /* ארוך יותר */
+        white-space: nowrap;
+        justify-content: center;
+        padding: 13px 24px;
         font-size: 1rem;
+        margin-bottom: 14px;
+        z-index: 4;
     }
+    .hero-image-col {
+        order: 3;
+        margin-top: -50px;          /* תמונה עולה יותר למעלה */
+        overflow: visible;
+        border: none !important;
+        background: none !important;
+        box-shadow: none !important;
+    }
+
+    /* הסתר כפתור בטקסט בנייד */
+    .hero-text .cta-button { display: none !important; }
+
+    .hero-title { font-size: 2.5rem; }
+    .hero-description { font-size: 1.15rem; margin-bottom: 0; }
+
+    /* תמונה קטנה יותר בנייד */
+    .hero-float-img { max-width: 82vw; margin-left: 0; }
+
+    /* ללא מסגרת על הלוגואים */
+    .logo-bubbles { overflow: visible; border: none; background: none; }
+    .hero-float-wrap { border: none !important; box-shadow: none !important; background: none !important; }
 }
 
+/* ================================================
+   SMALL MOBILE (≤600px)
+   ================================================ */
 @media (max-width: 600px) {
-    .hero-section {
-        padding: 60px 0;
+    .hero-cta--mobile-btn {
+        width: 56%;
+        margin-left: auto;
+        margin-right: auto;
+        transform: translateX(-4%);
+        font-size: 0.88rem;
+        padding: 11px 16px;
     }
-
-    .hero-title {
-        font-size: 2.4rem;
-    }
-
-    .hero-description {
-        font-size: 1.1rem;
-    }
-
-    .image-frame {
-        max-width: 260px;
-        width: 100%;
-    }
-
-    .cta-button {
-        padding: 12px 26px;
-        font-size: 0.95rem;
-    }
+    .hero-title { font-size: 2.1rem; }
+    .hero-float-img { max-width: 110vw; margin-left: -5vw; }
 }
 
 /* UGC Videos Section */
@@ -799,7 +957,7 @@ body {
 
 /* Clients Logos Section */
 .clients-logos-section {
-    padding: 80px 0 100px;
+    padding: 40px 0 100px;
     background: var(--cream);
     position: relative;
     overflow: hidden;

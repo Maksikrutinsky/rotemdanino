@@ -6,7 +6,7 @@
     <title>רותם דנינו | מנהלת סושיאל</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@300;400;500;600;700;800&family=Great+Vibes&family=Playfair+Display:ital@1&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@300;400;500;600;700;800&family=Caveat:wght@400;500;600&family=Great+Vibes&family=Playfair+Display:ital@1&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -57,29 +57,34 @@
     <section class="hero-section" id="hero">
         <div class="container">
 
-            <!-- Badge — above image on mobile, above image column on desktop -->
+            <!-- Badge -->
             <div class="hero-badge">
                 לבעלי עסקים שמשווקים באינסטגרם ועושים מעל 30,000 שקלים בחודש
             </div>
 
             <div class="hero-content">
 
-                <!-- Image -->
-                <div class="hero-image">
-                    <div class="image-frame">
-                        <img src="IMG_9368.webp" alt="רותם דנינו">
+                <!-- Image column -->
+                <div class="hero-image-col">
+                    <div class="logo-bubbles" id="logoBubbles" aria-hidden="true"></div>
+                    <div class="hero-float-wrap">
+                        <img src="IMG_9368.webp" alt="רותם דנינו" class="hero-float-img">
                     </div>
                 </div>
 
-                <!-- Text -->
+                <!-- כפתור נייד — בין הטקסט לתמונה -->
+                <a href="#contact" class="cta-button cta-social hero-cta--mobile-btn">
+                    <span class="cta-social__text">אני רוצה להפוך למותג</span>
+                    <span class="cta-social__icon">✦</span>
+                </a>
+
+                <!-- Text + כפתור דסקטופ -->
                 <div class="hero-text">
                     <h1 class="hero-title">אני אהפוך את העסק שלכם <span class="hero-title-accent">למותג בסושיאל</span></h1>
-
                     <p class="hero-description">אחרי שעבדתי עם המותגים הכי גדולים במדינה — עכשיו התור שלכם.</p>
-
-                    <a href="#contact" class="cta-button">
-                        אני רוצה להפוך למותג
-                        <span class="arrow">←</span>
+                    <a href="#contact" class="cta-button cta-social">
+                        <span class="cta-social__text">אני רוצה להפוך למותג</span>
+                        <span class="cta-social__icon">✦</span>
                     </a>
                 </div>
 
