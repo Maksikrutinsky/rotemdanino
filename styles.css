@@ -80,7 +80,7 @@ body {
     align-items: flex-start;
     justify-content: center;
     padding: 10px 0 0;
-    background: var(--cream-white);
+    background: linear-gradient(160deg, #fdfcfa 0%, #f5ede3 40%, #faf4ee 70%, #fdfcfa 100%);
     position: relative;
     overflow: clip;
 }
@@ -169,6 +169,7 @@ body {
 
 .hero-title-main {
     font-size: 0.75em;
+    white-space: nowrap;
 }
 
 .hero-title-accent {
