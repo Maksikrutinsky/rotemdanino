@@ -407,9 +407,9 @@ body {
    ================================================ */
 @media (min-width: 969px) {
     .hero-text .cta-button { display: inline-flex; }
-    .hero-section { padding-top: 80px; padding-bottom: 0; min-height: auto; }
+    .hero-section { padding-top: 60px; padding-bottom: 0; min-height: auto; }
     .hero-image-col { margin-top: -20px; }
-    .hero-text { padding-top: 60px; }
+    .hero-text { padding-top: 40px; }
     .hero-float-img { max-width: 380px; }
     .hero-content { gap: 60px; }
 }
