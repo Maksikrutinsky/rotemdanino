@@ -209,7 +209,7 @@ body {
     font-style: normal;
     line-height: 1.0;
     margin-bottom: 16px;
-    color: var(--rose);
+    color: #1a1a1a;
     letter-spacing: -0.01em;
 }
 
@@ -223,7 +223,7 @@ body {
 .hero-title-accent {
     font-size: 1em;
     white-space: nowrap;
-    color: var(--rose);
+    color: #1a1a1a;
     background: none;
     -webkit-background-clip: unset;
     -webkit-text-fill-color: unset;
