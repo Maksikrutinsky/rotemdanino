@@ -1045,12 +1045,12 @@ body {
 .clients-logos-eyebrow {
     text-align: center;
     font-family: 'Cormorant Garamond', serif;
-    font-size: 3.8rem;
+    font-size: 4.2rem;
     font-weight: 300;
     font-style: italic;
     letter-spacing: 0.08em;
     color: var(--brown-mid, #8b6b4a);
-    margin-bottom: 20px;
+    margin-bottom: 6px;
     margin-top: 50px;
 }
 
@@ -1234,10 +1234,10 @@ body {
     }
 
     .clients-logos-eyebrow {
-        font-size: 2rem;
+        font-size: 2.8rem;
         margin-top: 30px;
-        margin-bottom: 14px;
-        font-weight: 400;
+        margin-bottom: 4px;
+        font-weight: 300;
     }
 
     .logo-scroll-item {
@@ -1275,8 +1275,9 @@ body {
     }
 
     .clients-logos-eyebrow {
-        font-size: 1.6rem;
+        font-size: 2.2rem;
         margin-top: 20px;
+        margin-bottom: 4px;
     }
 
     .clients-logos-title {
