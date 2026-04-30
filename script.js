@@ -493,3 +493,20 @@ navHamburger.addEventListener('click', () => {
         banner.classList.remove('visible');
     });
 })();
+
+// About section reveal animation
+(function() {
+    const about = document.querySelector('.about-section');
+    if (!about) return;
+    const observer = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+            if (entry.isIntersecting) {
+                setTimeout(function() {
+                    about.classList.add('about-revealed');
+                }, 600);
+                observer.disconnect();
+            }
+        });
+    }, { threshold: 0.3 });
+    observer.observe(about);
+})();
