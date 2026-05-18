@@ -76,6 +76,33 @@
     });
 })();
 
+// Services stack accordion
+(function() {
+    function initStack() {
+        const items = document.querySelectorAll('.svc-item');
+        if (!items.length) return;
+
+        function activate(idx) {
+            items.forEach((item, i) => item.classList.toggle('active', i === idx));
+        }
+
+        items.forEach((item, i) => {
+            item.addEventListener('click', () => {
+                const isActive = item.classList.contains('active');
+                activate(isActive ? -1 : i);
+            });
+        });
+
+        activate(0);
+    }
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initStack);
+    } else {
+        initStack();
+    }
+})();
+
 // Clean parallax effect on scroll
 document.addEventListener('DOMContentLoaded', function() {
     const parallaxBg = document.querySelector('.parallax-bg');
