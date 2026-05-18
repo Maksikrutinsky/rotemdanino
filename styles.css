@@ -1505,27 +1505,6 @@ body {
     overflow: hidden;
 }
 
-/* Full-bleed background image with blur */
-.services-section .services-bg-img {
-    position: absolute;
-    inset: 0;
-    background: url('services-bg.avif') center 20% / cover no-repeat;
-    filter: blur(4px) saturate(0.9);
-    transform: scale(1.02);
-    opacity: 0.65;
-    z-index: 0;
-    pointer-events: none;
-}
-
-/* Light overlay on top of image */
-.services-section .services-bg-overlay {
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(160deg, rgba(245,240,232,0.45) 0%, rgba(250,247,242,0.40) 100%);
-    z-index: 0;
-    pointer-events: none;
-}
-
 /* Background watermark */
 .services-bg-text {
     display: none;
@@ -1591,10 +1570,8 @@ body {
     position: relative;
     border-radius: 20px;
     padding: 44px 32px 40px;
-    background: rgba(255,255,255,0.72);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    border: 1px solid rgba(255,255,255,0.92);
+    background: var(--cream-white);
+    border: 1px solid rgba(184,160,137,0.2);
     box-shadow: 0 4px 24px rgba(139,115,85,0.08);
     overflow: hidden;
     transition: transform 0.4s cubic-bezier(0.4,0,0.2,1), box-shadow 0.4s ease;
@@ -1602,7 +1579,7 @@ body {
 }
 
 .service-card--featured {
-    background: rgba(255,255,255,0.88);
+    background: #fff;
     border-color: rgba(174,36,75,0.18);
     box-shadow: 0 8px 40px rgba(174,36,75,0.1);
 }
@@ -2071,10 +2048,35 @@ body {
    ======================================== */
 /* ===== PROCESS / WORKFLOW SECTION ===== */
 .process-section {
-    background: var(--cream-dark);
+    background: var(--cream-light);
     padding: 100px 0 120px;
     position: relative;
     overflow: hidden;
+}
+
+.process-bg-img {
+    position: absolute;
+    inset: 0;
+    background: url('services-bg.avif') center 20% / cover no-repeat;
+    filter: blur(4px) saturate(0.9);
+    transform: scale(1.02);
+    opacity: 0.65;
+    z-index: 0;
+    pointer-events: none;
+}
+
+@media (max-width: 768px) {
+    .process-bg-img {
+        background-position: center top;
+    }
+}
+
+.process-bg-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(160deg, rgba(245,240,232,0.45) 0%, rgba(250,247,242,0.40) 100%);
+    z-index: 0;
+    pointer-events: none;
 }
 
 /* Watermark */
@@ -2111,10 +2113,12 @@ body {
     margin-bottom: 12px;
 }
 .process-title {
-    font-family: 'Great Vibes', cursive;
-    font-size: 3.8rem;
-    font-weight: 400;
+    font-family: 'Frank Ruhl Libre', serif;
+    font-size: clamp(3rem, 8vw, 6rem);
+    font-weight: 700;
     color: #1a1a1a;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
     margin: 0;
 }
 
