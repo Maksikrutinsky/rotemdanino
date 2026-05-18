@@ -2049,15 +2049,19 @@ body {
     }
 
     .testimonials-masonry {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 8px;
+        display: block;
+        column-count: 2;
+        column-gap: 8px;
         padding: 0 16px;
-        align-items: start;
     }
 
     .testimonials-col {
-        gap: 8px;
+        display: contents;
+    }
+
+    .testimonial-item {
+        break-inside: avoid;
+        margin-bottom: 8px;
         margin-top: 0 !important;
     }
 }
