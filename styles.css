@@ -2060,10 +2060,6 @@ body {
         gap: 8px;
         margin-top: 0 !important;
     }
-
-    .testimonials-col:nth-child(2) {
-        margin-top: 20px !important;
-    }
 }
 
 /* ========================================
