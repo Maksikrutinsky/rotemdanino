@@ -1534,8 +1534,8 @@ body {
 
 .services-title {
     font-family: 'Frank Ruhl Libre', serif;
-    font-size: clamp(3.2rem, 9vw, 7.5rem);
-    font-weight: 700;
+    font-size: clamp(2.8rem, 6.5vw, 5.5rem);
+    font-weight: 300;
     color: #1a1a1a;
     letter-spacing: 0.08em;
     text-transform: uppercase;
@@ -1559,65 +1559,90 @@ body {
 .services-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 24px;
+    gap: 0;
     max-width: 1100px;
     margin: 0 auto;
     position: relative;
     z-index: 1;
 }
 
+.service-item {
+    position: relative;
+    padding: 60px 32px 50px;
+    text-align: center;
+    cursor: default;
+    overflow: hidden;
+    border-right: 1px solid rgba(174,36,75,0.12);
+    transition: background 0.4s ease;
+}
+
+.service-item:last-child { border-right: none; }
+.service-item:hover { background: rgba(174,36,75,0.03); }
+
+.service-item-icon {
+    width: 130px;
+    height: 130px;
+    margin: 0 auto 24px;
+    color: var(--rose);
+    opacity: 0.18;
+    transition: opacity 0.4s ease, transform 0.5s cubic-bezier(0.34,1.56,0.64,1);
+}
+
+.service-item:hover .service-item-icon {
+    opacity: 0.55;
+    transform: scale(1.08) rotate(-4deg);
+}
+
+.service-item-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1rem;
+    font-weight: 300;
+    color: var(--rose);
+    letter-spacing: 0.2em;
+    margin-bottom: 12px;
+    opacity: 0.6;
+}
+
+.service-item-info {
+    transition: transform 0.4s ease, opacity 0.4s ease;
+}
+
 .service-card {
     position: relative;
-    border-radius: 20px;
-    padding: 44px 32px 40px;
-    background: var(--cream-white);
-    border: 1px solid rgba(184,160,137,0.2);
-    box-shadow: 0 4px 24px rgba(139,115,85,0.08);
+    padding: 48px 36px 44px;
+    background: transparent;
+    border: none;
+    border-right: 2px solid rgba(174,36,75,0.2);
     overflow: hidden;
-    transition: transform 0.4s cubic-bezier(0.4,0,0.2,1), box-shadow 0.4s ease;
+    transition: border-color 0.4s ease;
     cursor: default;
 }
 
 .service-card--featured {
-    background: #fff;
-    border-color: rgba(174,36,75,0.18);
-    box-shadow: 0 8px 40px rgba(174,36,75,0.1);
+    border-right-color: var(--rose);
 }
 
 .service-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 24px 60px rgba(139,115,85,0.14);
+    border-right-color: var(--rose);
 }
 
-/* Rose top bar slides in on hover */
-.service-card::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0;
-    height: 3px;
-    background: linear-gradient(90deg, transparent, var(--rose), transparent);
-    transform: scaleX(0);
-    transition: transform 0.5s cubic-bezier(0.4,0,0.2,1);
-}
-.service-card:hover::before,
-.service-card--featured::before { transform: scaleX(1); }
+.service-card::before { display: none; }
 
 /* Big number in background */
 .service-card-number {
     position: absolute;
-    bottom: -16px;
-    left: -8px;
-    font-family: 'Frank Ruhl Libre', serif;
-    font-size: 8rem;
-    font-weight: 700;
-    color: rgba(174,36,75,0.05);
+    top: 20px;
+    left: 16px;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 7rem;
+    font-weight: 300;
+    color: rgba(174,36,75,0.06);
     line-height: 1;
     pointer-events: none;
-    letter-spacing: -0.04em;
     transition: color 0.4s ease;
     z-index: 0;
 }
-.service-card:hover .service-card-number { color: rgba(174,36,75,0.1); }
+.service-card:hover .service-card-number { color: rgba(174,36,75,0.12); }
 
 .service-card-inner {
     position: relative;
@@ -1626,35 +1651,32 @@ body {
 }
 
 .service-icon {
-    width: 52px;
-    height: 52px;
+    width: 48px;
+    height: 48px;
     display: flex;
     align-items: center;
     justify-content: center;
-    background: rgba(174,36,75,0.07);
-    border-radius: 14px;
-    border: 1px solid rgba(174,36,75,0.18);
-    margin-bottom: 24px;
+    background: transparent;
+    border-radius: 0;
+    border: none;
+    margin-bottom: 20px;
     margin-right: auto;
     transition: all 0.35s ease;
     color: var(--rose);
+    opacity: 0.6;
 }
 .service-card:hover .service-icon {
-    background: var(--rose);
-    border-color: var(--rose);
-    color: #fff;
-    transform: rotate(-6deg) scale(1.1);
-    box-shadow: 0 6px 20px rgba(174,36,75,0.28);
+    opacity: 1;
+    transform: scale(1.1);
 }
 
 .service-name {
-    font-family: 'Frank Ruhl Libre', serif;
-    font-size: 1.35rem;
-    font-weight: 700;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.7rem;
+    font-weight: 600;
     color: var(--text-dark);
     margin-bottom: 14px;
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
+    letter-spacing: 0.03em;
 }
 
 .service-description {
@@ -1666,7 +1688,12 @@ body {
 
 @media (max-width: 968px) {
     .services-section { padding: 80px 0; }
-    .services-grid { grid-template-columns: 1fr; max-width: 460px; gap: 16px; }
+    .services-grid { grid-template-columns: 1fr; max-width: 460px; gap: 0; }
+    .service-item { border-right: none; border-bottom: 1px solid rgba(174,36,75,0.12); padding: 48px 24px; }
+    .service-item:last-child { border-bottom: none; }
+    .service-item-icon { opacity: 0.35; width: 110px; height: 110px; }
+    .service-item.active { background: rgba(174,36,75,0.04); }
+    .service-item.active .service-item-icon { opacity: 0.55; transform: scale(1.08) rotate(-4deg); }
 }
 
 @media (max-width: 600px) {
@@ -2114,8 +2141,8 @@ body {
 }
 .process-title {
     font-family: 'Frank Ruhl Libre', serif;
-    font-size: clamp(3rem, 8vw, 6rem);
-    font-weight: 700;
+    font-size: clamp(2.8rem, 6.5vw, 5.5rem);
+    font-weight: 300;
     color: #1a1a1a;
     text-transform: uppercase;
     letter-spacing: 0.08em;

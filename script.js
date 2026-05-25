@@ -445,6 +445,20 @@ navHamburger.addEventListener('click', () => {
         goTo(current);
     });
 
+    // Auto-scroll
+    let paused = false;
+    const wrapper = track.closest('.stills-carousel-wrapper') || track.parentElement;
+    wrapper.addEventListener('mouseenter', function() { paused = true; });
+    wrapper.addEventListener('mouseleave', function() { paused = false; });
+    wrapper.addEventListener('touchstart', function() { paused = true; }, { passive: true });
+    wrapper.addEventListener('touchend', function() { setTimeout(function() { paused = false; }, 2000); }, { passive: true });
+
+    setInterval(function() {
+        if (paused || isDragging) return;
+        if (current >= maxIndex()) goTo(0);
+        else goNext();
+    }, 3500);
+
     // Init
     buildDots();
     goTo(0);
@@ -536,4 +550,20 @@ navHamburger.addEventListener('click', () => {
         });
     }, { threshold: 0.3 });
     observer.observe(about);
+})();
+
+// Service item highlight on scroll (mobile)
+(function() {
+    if (!window.matchMedia('(hover: none)').matches) return;
+    var items = document.querySelectorAll('.service-item');
+    if (!items.length) return;
+    var observer = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+            if (entry.isIntersecting) {
+                items.forEach(function(i) { i.classList.remove('active'); });
+                entry.target.classList.add('active');
+            }
+        });
+    }, { threshold: 0.6 });
+    items.forEach(function(item) { observer.observe(item); });
 })();
