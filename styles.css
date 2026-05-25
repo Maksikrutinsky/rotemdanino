@@ -2286,14 +2286,101 @@ body {
     .process-step.wf-from-right .process-card,
     .process-step.wf-from-left .process-card { order: 2; text-align: right; }
     .process-card-empty { display: none; }
-    .process-bg-text { font-size: 4rem; }
-    .process-title { font-size: 3rem; }
+    .process-bg-text {
+        font-size: 4.5rem;
+        white-space: nowrap;
+        top: 0;
+    }
+    .process-header {
+        margin-top: -50px;
+    }
+    .process-title { font-size: 2rem; white-space: nowrap; }
     .process-node-num { font-size: 1.3rem; }
 }
 
 /* ========================================
    FAQ SECTION - Revolutionary Design
    ======================================== */
+/* Brand Showcase */
+.brand-showcase {
+    position: relative;
+    height: 80vh;
+    overflow: hidden;
+}
+
+.brand-showcase-img {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.brand-showcase-img img:first-child {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 70%;
+    display: block;
+}
+
+.brand-showcase-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(20,10,8,0.45);
+}
+
+.brand-showcase-logo {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding-top: 10%;
+    opacity: 0;
+    transform: scale(0.85);
+    transition: opacity 1s ease 0.3s, transform 1s ease 0.3s;
+}
+
+.brand-showcase-logo img {
+    width: 160px;
+    max-width: 40%;
+    filter: brightness(0) invert(1);
+    opacity: 0.88;
+    transition: filter 1.2s ease 1s, opacity 1.2s ease 1s;
+}
+
+.brand-showcase.revealed .brand-showcase-logo {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.brand-showcase.revealed .brand-showcase-logo img {
+    filter: brightness(0) invert(1);
+    opacity: 1;
+}
+
+@media (max-width: 768px) {
+    .brand-showcase {
+        height: 65vh;
+    }
+    .brand-showcase-img img:first-child {
+        object-position: center center;
+        transform: scale(1.15);
+        transform-origin: center center;
+    }
+    .brand-showcase-logo {
+        align-items: center;
+        justify-content: center;
+        padding-top: 0;
+        margin-top: -60px;
+    }
+    .brand-showcase-logo img {
+        width: 220px;
+        max-width: 65%;
+        max-height: 170px;
+        object-fit: contain;
+    }
+}
+
 .faq-section {
     background: linear-gradient(160deg, #ede5da 0%, #e6ddd4 50%, #ede5da 100%);
     padding: 90px 0 100px;
@@ -2358,17 +2445,15 @@ body {
 
 .faq-title {
     text-align: center;
-    font-family: 'Great Vibes', cursive;
-    font-size: 3.8rem;
-    font-weight: 400;
+    font-family: 'Frank Ruhl Libre', serif;
+    font-size: clamp(2.2rem, 4.5vw, 4rem);
+    font-weight: 300;
     color: #1a1a1a;
     margin-bottom: 10px;
     position: relative;
     z-index: 1;
-}
-
-.faq-title::before {
-    content: '?';
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
 }
 
 .faq-subtitle {
@@ -2383,28 +2468,35 @@ body {
 
 .faq-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
-    max-width: 1100px;
+    grid-template-columns: 1fr;
+    gap: 0;
+    max-width: 800px;
     margin: 0 auto;
 }
 
 .faq-item {
-    background: var(--white);
-    border: 1px solid var(--brown-soft);
-    border-radius: 20px;
+    background: transparent;
+    border: none;
+    border-right: 3px solid transparent;
+    border-bottom: 1px solid rgba(26,23,20,0.08);
+    border-radius: 0;
     overflow: hidden;
-    transition: all 0.4s ease;
+    transition: border-color 0.35s ease, background 0.35s ease;
+    padding-right: 4px;
 }
 
+.faq-item:first-child { border-top: 1px solid rgba(26,23,20,0.08); }
+
 .faq-item:hover {
-    border-color: var(--brown-light);
-    box-shadow: 0 15px 40px rgba(139, 115, 85, 0.1);
+    border-right-color: rgba(174,36,75,0.3);
+    background: transparent;
+    box-shadow: none;
 }
 
 .faq-item.active {
-    border-color: var(--brown-medium);
-    box-shadow: 0 10px 30px rgba(139, 115, 85, 0.12);
+    border-right-color: var(--rose);
+    background: transparent;
+    box-shadow: none;
 }
 
 .faq-question {
@@ -2420,38 +2512,22 @@ body {
     transition: all 0.3s ease;
 }
 
-.faq-q-icon {
-    flex-shrink: 0;
-    width: 45px;
-    height: 45px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: rgba(174, 36, 75, 0.07);
-    border: 1px solid rgba(174, 36, 75, 0.2);
-    border-radius: 12px;
-    font-size: 1.5rem;
-    font-weight: 800;
-    color: var(--brown-medium);
-    transition: all 0.4s ease;
-}
-
-.faq-item:hover .faq-q-icon {
-    transform: rotate(10deg) scale(1.1);
-}
-
-.faq-item.active .faq-q-icon {
-    background: rgba(174, 36, 75, 0.07);
-    border-color: rgba(174, 36, 75, 0.2);
-}
+.faq-q-icon { display: none; }
+.faq-item:hover .faq-q-icon { display: none; }
+.faq-item.active .faq-q-icon { display: none; }
 
 .faq-q-text {
     flex: 1;
-    font-size: 1.15rem;
-    font-weight: 600;
+    font-family: 'Assistant', sans-serif;
+    font-size: 1.05rem;
+    font-weight: 500;
     color: var(--text-dark);
     line-height: 1.4;
+    letter-spacing: 0.01em;
 }
+
+.faq-item:hover .faq-q-text { color: #1a1a1a; }
+.faq-item.active .faq-q-text { color: var(--rose); font-weight: 700; }
 
 .faq-arrow {
     flex-shrink: 0;
@@ -2611,13 +2687,15 @@ body {
 /* Watermark */
 .contact-bg-text {
     position: absolute;
-    top: 30%;
+    top: 35%;
     left: 50%;
-    transform: translateX(-50%);
+    transform: translate(-50%, -50%);
     font-family: 'Great Vibes', cursive;
-    font-size: 13rem;
-    color: rgba(174, 36, 75, 0.07);
+    font-size: 10rem;
+    color: rgba(174, 36, 75, 0.09);
     white-space: nowrap;
+    pointer-events: none;
+    z-index: 0;
     pointer-events: none;
     line-height: 1;
     z-index: 0;
@@ -2642,6 +2720,8 @@ body {
     gap: 0;
     align-items: center;
     text-align: center;
+    position: relative;
+    overflow: visible;
 }
 
 .contact-eyebrow {
@@ -2656,13 +2736,16 @@ body {
 }
 
 .contact-title {
-    font-family: 'Great Vibes', cursive;
-    font-size: 5rem;
-    font-weight: 400;
+    position: relative;
+    z-index: 1;
+    font-family: 'Frank Ruhl Libre', serif;
+    font-size: clamp(2.2rem, 4.5vw, 4rem);
+    font-weight: 300;
     color: var(--text-dark);
     line-height: 1.1;
     margin-bottom: 20px;
-    letter-spacing: 0;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
 }
 
 .contact-desc {
@@ -2702,11 +2785,12 @@ body {
 
 /* Form side */
 .contact-form-wrapper {
-    background: var(--white);
-    border: 1px solid rgba(184, 160, 137, 0.25);
-    border-radius: 28px;
-    padding: 40px 36px;
-    box-shadow: 0 8px 40px rgba(139, 115, 85, 0.08);
+    background: linear-gradient(135deg, rgba(212,196,176,0.18) 0%, rgba(174,36,75,0.06) 100%);
+    border: 1px solid rgba(184,160,137,0.3);
+    border-radius: 24px;
+    padding: 36px 32px;
+    box-shadow: 0 8px 40px rgba(139,115,85,0.1);
+    backdrop-filter: blur(4px);
 }
 
 .contact-form {
@@ -2721,26 +2805,27 @@ body {
 
 .contact-form input {
     width: 100%;
-    padding: 16px 20px;
+    padding: 15px 18px;
     font-size: 0.95rem;
     font-family: 'Assistant', sans-serif;
-    border: 1px solid rgba(184, 160, 137, 0.3);
-    border-radius: 14px;
-    background: var(--cream-light);
+    border: 1.5px solid rgba(184,160,137,0.35);
+    border-radius: 12px;
+    background: rgba(255,255,255,0.55);
     color: var(--text-dark);
     transition: all 0.3s ease;
     direction: rtl;
+    box-sizing: border-box;
 }
 
 .contact-form input::placeholder {
-    color: var(--brown-light);
+    color: rgba(26,23,20,0.4);
 }
 
 .contact-form input:focus {
     outline: none;
-    border-color: rgba(174, 36, 75, 0.3);
-    background: var(--white);
-    box-shadow: 0 0 0 3px rgba(174, 36, 75, 0.06);
+    border-color: var(--rose);
+    background: rgba(255,255,255,0.8);
+    box-shadow: 0 0 0 3px rgba(174,36,75,0.07);
 }
 
 .contact-form input[type="tel"] {
@@ -2797,11 +2882,23 @@ body {
         grid-template-columns: 1fr;
         gap: 48px;
     }
+    .contact-info {
+        margin-top: -20px;
+    }
     .contact-title {
         font-size: 3.8rem;
     }
     .contact-bg-text {
-        font-size: 6rem;
+        font-size: 5rem;
+        position: relative;
+        top: auto;
+        left: auto;
+        transform: none;
+        text-align: center;
+        display: block;
+        margin-bottom: -35px;
+        margin-top: -50px;
+        z-index: 0;
     }
 }
 
@@ -2811,6 +2908,9 @@ body {
     }
     .contact-form-wrapper {
         padding: 28px 22px;
+        margin-top: -30px;
+        margin-left: auto;
+        margin-right: auto;
     }
     .contact-title {
         font-size: 3.2rem;

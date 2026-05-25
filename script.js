@@ -445,19 +445,6 @@ navHamburger.addEventListener('click', () => {
         goTo(current);
     });
 
-    // Auto-scroll
-    let paused = false;
-    const wrapper = track.closest('.stills-carousel-wrapper') || track.parentElement;
-    wrapper.addEventListener('mouseenter', function() { paused = true; });
-    wrapper.addEventListener('mouseleave', function() { paused = false; });
-    wrapper.addEventListener('touchstart', function() { paused = true; }, { passive: true });
-    wrapper.addEventListener('touchend', function() { setTimeout(function() { paused = false; }, 2000); }, { passive: true });
-
-    setInterval(function() {
-        if (paused || isDragging) return;
-        if (current >= maxIndex()) goTo(0);
-        else goNext();
-    }, 3500);
 
     // Init
     buildDots();
@@ -533,6 +520,24 @@ navHamburger.addEventListener('click', () => {
         setCookie('essential');
         banner.classList.remove('visible');
     });
+})();
+
+// Brand showcase reveal
+(function() {
+    var showcase = document.querySelector('.brand-showcase');
+    if (!showcase) return;
+    var observer = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+            if (entry.isIntersecting) {
+                showcase.classList.remove('revealed');
+                void showcase.offsetWidth;
+                showcase.classList.add('revealed');
+            } else {
+                showcase.classList.remove('revealed');
+            }
+        });
+    }, { threshold: 0.3 });
+    observer.observe(showcase);
 })();
 
 // About section reveal animation
