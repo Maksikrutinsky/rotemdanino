@@ -411,7 +411,8 @@ navHamburger.addEventListener('click', () => {
     prevBtn && prevBtn.addEventListener('click', goPrev);
     nextBtn && nextBtn.addEventListener('click', goNext);
 
-    // Touch / drag support — RTL: swipe left (negative offset) = next (forward), swipe right = prev (back)
+    // Touch — only on desktop (mobile uses native scroll-snap)
+    if (window.innerWidth > 768) {
     track.addEventListener('touchstart', e => { startX = e.touches[0].clientX; isDragging = true; dragOffset = 0; }, { passive: true });
     track.addEventListener('touchmove', e => {
         if (!isDragging) return;
@@ -424,6 +425,7 @@ navHamburger.addEventListener('click', () => {
         else if (dragOffset < -50) goPrev();
         dragOffset = 0;
     });
+    }
 
     // Mouse drag — same RTL logic
     track.addEventListener('mousedown', e => { startX = e.clientX; isDragging = true; dragOffset = 0; track.style.cursor = 'grabbing'; });
@@ -522,10 +524,22 @@ navHamburger.addEventListener('click', () => {
     });
 })();
 
-// Brand showcase reveal
+// Brand showcase reveal + parallax
 (function() {
     var showcase = document.querySelector('.brand-showcase');
     if (!showcase) return;
+    var img = showcase.querySelector('img');
+
+    // Parallax (desktop only)
+    if (window.innerWidth > 768 && img) {
+        window.addEventListener('scroll', function() {
+            var rect = showcase.getBoundingClientRect();
+            var progress = -rect.top / (window.innerHeight + showcase.offsetHeight);
+            var offset = (progress - 0.3) * 120;
+            img.style.transform = 'translateY(' + offset + 'px)';
+        }, { passive: true });
+    }
+
     var observer = new IntersectionObserver(function(entries) {
         entries.forEach(function(entry) {
             if (entry.isIntersecting) {
