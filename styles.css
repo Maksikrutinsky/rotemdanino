@@ -841,7 +841,8 @@ body {
 }
 
 .category-number {
-    font-family: 'Great Vibes', cursive;
+    font-family: 'Cormorant Garamond', serif;
+    font-style: normal;
     font-size: 2.2rem;
     color: var(--rose);
     line-height: 1;
@@ -1634,6 +1635,7 @@ body {
     top: 20px;
     left: 16px;
     font-family: 'Cormorant Garamond', serif;
+    font-style: normal;
     font-size: 7rem;
     font-weight: 300;
     color: rgba(174,36,75,0.06);
@@ -2207,7 +2209,8 @@ body {
     z-index: 2;
 }
 .process-node-num {
-    font-family: 'Great Vibes', cursive;
+    font-family: 'Cormorant Garamond', serif;
+    font-style: normal;
     font-size: 1.6rem;
     color: var(--rose);
     line-height: 1;
@@ -2320,12 +2323,13 @@ body {
     object-fit: cover;
     object-position: center 70%;
     display: block;
+    filter: contrast(1.18) saturate(1.15);
 }
 
 .brand-showcase-overlay {
     position: absolute;
     inset: 0;
-    background: rgba(20,10,8,0.45);
+    background: linear-gradient(rgba(0,0,0,0.18), rgba(0,0,0,0.18)), rgba(255,255,255,0.73);
 }
 
 .brand-showcase-logo {
@@ -2343,7 +2347,7 @@ body {
 .brand-showcase-logo img {
     width: 160px;
     max-width: 40%;
-    filter: brightness(0) invert(1);
+    filter: none;
     opacity: 0.88;
     transition: filter 1.2s ease 1s, opacity 1.2s ease 1s;
 }
@@ -2354,7 +2358,7 @@ body {
 }
 
 .brand-showcase.revealed .brand-showcase-logo img {
-    filter: brightness(0) invert(1);
+    filter: none;
     opacity: 1;
 }
 
@@ -2371,7 +2375,7 @@ body {
         align-items: center;
         justify-content: center;
         padding-top: 0;
-        margin-top: -60px;
+        margin-top: -20px;
     }
     .brand-showcase-logo img {
         width: 220px;
@@ -2475,28 +2479,32 @@ body {
 }
 
 .faq-item {
-    background: transparent;
-    border: none;
+    background: rgba(255, 255, 255, 0.65);
+    border: 1.5px solid rgba(174, 36, 75, 0.15);
     border-right: 3px solid transparent;
-    border-bottom: 1px solid rgba(26,23,20,0.08);
-    border-radius: 0;
+    border-radius: 14px;
     overflow: hidden;
-    transition: border-color 0.35s ease, background 0.35s ease;
-    padding-right: 4px;
+    transition: border-color 0.35s ease, background 0.35s ease, box-shadow 0.35s ease;
+    padding-right: 0;
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    margin-bottom: 12px;
 }
 
-.faq-item:first-child { border-top: 1px solid rgba(26,23,20,0.08); }
+/* no special first-child override needed — cards have full borders */
 
 .faq-item:hover {
-    border-right-color: rgba(174,36,75,0.3);
-    background: transparent;
-    box-shadow: none;
+    border-color: rgba(174, 36, 75, 0.35);
+    border-right-color: rgba(174, 36, 75, 0.35);
+    background: rgba(255, 255, 255, 0.8);
+    box-shadow: 0 4px 16px rgba(174, 36, 75, 0.08);
 }
 
 .faq-item.active {
+    border-color: var(--rose);
     border-right-color: var(--rose);
-    background: transparent;
-    box-shadow: none;
+    background: rgba(255, 255, 255, 0.92);
+    box-shadow: 0 6px 24px rgba(174, 36, 75, 0.13);
 }
 
 .faq-question {
@@ -2528,6 +2536,7 @@ body {
 
 .faq-item:hover .faq-q-text { color: #1a1a1a; }
 .faq-item.active .faq-q-text { color: var(--rose); font-weight: 700; }
+.faq-item.active .faq-question { background: rgba(174, 36, 75, 0.05); border-radius: 12px 12px 0 0; }
 
 .faq-arrow {
     flex-shrink: 0;
@@ -2833,6 +2842,11 @@ body {
     text-align: right;
 }
 
+@keyframes btnGlow {
+    0%, 100% { box-shadow: 0 0 8px rgba(174, 36, 75, 0.2), 0 0 20px rgba(174, 36, 75, 0.1); border-color: rgba(174, 36, 75, 0.35); }
+    50%       { box-shadow: 0 0 16px rgba(174, 36, 75, 0.45), 0 0 40px rgba(174, 36, 75, 0.2); border-color: rgba(174, 36, 75, 0.7); }
+}
+
 /* Submit button */
 .contact-submit {
     display: flex;
@@ -2840,10 +2854,12 @@ body {
     justify-content: center;
     gap: 12px;
     width: 100%;
-    padding: 16px 28px;
+    padding: 18px 32px;
     margin-top: 6px;
     background: rgba(174, 36, 75, 0.07);
-    border: 1px solid rgba(174, 36, 75, 0.2);
+    border: 1.5px solid rgba(174, 36, 75, 0.35);
+    box-shadow: 0 0 8px rgba(174, 36, 75, 0.2), 0 0 20px rgba(174, 36, 75, 0.1);
+    animation: btnGlow 2.2s ease-in-out infinite;
     border-radius: 14px;
     color: var(--rose);
     font-family: 'Assistant', sans-serif;
@@ -2851,24 +2867,19 @@ body {
     font-weight: 600;
     letter-spacing: 1px;
     cursor: pointer;
-    transition: transform 0.3s ease, box-shadow 0.3s ease, opacity 0.3s ease;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
     position: relative;
     overflow: hidden;
 }
-.contact-submit::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: rgba(0,0,0,0.1);
-    opacity: 0;
-    transition: opacity 0.3s ease;
+.contact-submit svg {
+    transition: transform 0.3s ease;
 }
 .contact-submit:hover {
     transform: translateY(-2px);
     box-shadow: 0 12px 40px rgba(174, 36, 75, 0.12);
 }
-.contact-submit:hover::before {
-    opacity: 1;
+.contact-submit:hover svg {
+    transform: translateX(-4px);
 }
 .contact-submit span,
 .contact-submit svg {
