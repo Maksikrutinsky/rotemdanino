@@ -1082,9 +1082,9 @@ body {
 
 /* Logos Scatter Grid */
 .logos-scatter-grid {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    grid-template-rows: auto auto auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
     gap: 20px 12px;
     align-items: center;
     justify-items: center;
@@ -1126,6 +1126,7 @@ body {
     z-index: 10;
     position: relative;
 }
+
 
 .logo-scatter img {
     width: 100%;
@@ -1256,6 +1257,7 @@ body {
     }
 
     .logos-scatter-grid {
+        display: grid;
         grid-template-columns: repeat(4, 1fr);
         gap: 16px 10px;
         padding: 20px 20px 40px;
@@ -1290,6 +1292,7 @@ body {
     }
 
     .logos-scatter-grid {
+        display: grid;
         grid-template-columns: repeat(3, 1fr);
         gap: 14px 10px;
         padding: 20px 16px 40px;
@@ -1757,7 +1760,7 @@ body {
     align-items: center;
     opacity: 0;
     transform: translateY(20px);
-    transition: opacity 0.6s ease 0.3s, transform 0.6s ease 0.3s;
+    transition: opacity 0.4s ease 0.1s, transform 0.4s ease 0.1s;
 }
 
 .about-section.about-revealed .about-content {
@@ -2330,8 +2333,8 @@ body {
 .brand-showcase-overlay {
     position: absolute;
     inset: 0;
-    background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), rgba(255,255,255,0.45);
-    box-shadow: inset 0 0 80px rgba(0,0,0,0.25);
+    background: linear-gradient(rgba(0,0,0,0.15), rgba(0,0,0,0.15)), rgba(255,255,255,0.68);
+    box-shadow: none;
 }
 
 .brand-showcase-logo {
@@ -2357,22 +2360,7 @@ body {
 }
 
 .brand-showcase-logo::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 100%;
-    height: 500px;
-    background:
-        radial-gradient(ellipse 220px 350px at 15% 0%, rgba(255,255,255,0.7) 0%, transparent 65%),
-        radial-gradient(ellipse 220px 350px at 38% 0%, rgba(255,255,255,0.7) 0%, transparent 65%),
-        radial-gradient(ellipse 220px 350px at 62% 0%, rgba(255,255,255,0.7) 0%, transparent 65%),
-        radial-gradient(ellipse 220px 350px at 85% 0%, rgba(255,255,255,0.7) 0%, transparent 65%);
-    pointer-events: none;
-    opacity: 0;
-    transition: opacity 1.4s ease 0.6s;
-    z-index: 1;
+    display: none;
 }
 
 .brand-showcase.revealed .brand-showcase-logo {
@@ -2396,8 +2384,12 @@ body {
     }
     .brand-showcase-img img:first-child {
         object-position: center center;
-        transform: scale(1.25);
-        transform-origin: center center;
+        transform: scale(1.4);
+        transform-origin: center 70%;
+    }
+    .brand-showcase-overlay {
+        background: linear-gradient(rgba(0,0,0,0.15), rgba(0,0,0,0.15)), rgba(255,255,255,0.68);
+        box-shadow: none;
     }
     .brand-showcase-logo {
         align-items: center;
@@ -2410,6 +2402,9 @@ body {
         max-width: 82%;
         max-height: 230px;
         object-fit: contain;
+    }
+    .brand-showcase-logo::after {
+        display: none;
     }
 }
 
@@ -3117,7 +3112,8 @@ body {
         scroll-snap-type: x mandatory;
         -webkit-overflow-scrolling: touch;
         scrollbar-width: none;
-        padding: 0 20px;
+        padding: 0;
+        width: 100%;
     }
     .stills-track-container::-webkit-scrollbar {
         display: none;
@@ -3126,9 +3122,12 @@ body {
         transform: none !important;
         transition: none !important;
         gap: 12px;
+        padding: 0 16px;
+        width: max-content;
     }
     .stills-slide {
-        flex: 0 0 82%;
+        flex: 0 0 78vw;
+        max-width: 340px;
         scroll-snap-align: center;
     }
     .stills-arrow {

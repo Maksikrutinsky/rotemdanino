@@ -563,7 +563,7 @@ navHamburger.addEventListener('click', () => {
             if (entry.isIntersecting) {
                 setTimeout(function() {
                     about.classList.add('about-revealed');
-                }, 600);
+                }, 150);
                 observer.disconnect();
             }
         });
