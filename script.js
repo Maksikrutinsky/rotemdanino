@@ -278,7 +278,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const video = item.querySelector('video');
         if (video) {
             video.pause();
-            video.currentTime = 0;
+            video.load(); // resets to poster
             const btn = item.querySelector('.portfolio-play-btn');
             if (btn) btn.style.opacity = '1';
         }
@@ -288,6 +288,22 @@ document.addEventListener('DOMContentLoaded', function() {
         if (!item) return;
         const video = item.querySelector('video');
         if (!video) return;
+
+        const restorePoster = () => {
+            if (!document.fullscreenElement && !document.webkitFullscreenElement) {
+                video.pause();
+                video.load();
+                const btn = item.querySelector('.portfolio-play-btn');
+                if (btn) btn.style.opacity = '1';
+                document.removeEventListener('fullscreenchange', restorePoster);
+                document.removeEventListener('webkitfullscreenchange', restorePoster);
+                video.removeEventListener('webkitendfullscreen', restorePoster);
+            }
+        };
+        document.addEventListener('fullscreenchange', restorePoster);
+        document.addEventListener('webkitfullscreenchange', restorePoster);
+        video.addEventListener('webkitendfullscreen', restorePoster);
+
         if (video.requestFullscreen) {
             video.requestFullscreen().then(() => video.play()).catch(() => video.play());
         } else if (video.webkitRequestFullscreen) {
@@ -353,7 +369,6 @@ navHamburger.addEventListener('click', () => {
 
     const slides = track.querySelectorAll('.stills-slide');
     const total = slides.length;
-    let current = 0;
     let slidesVisible = getSlidesVisible();
     let startX = 0;
     let isDragging = false;
@@ -372,14 +387,19 @@ navHamburger.addEventListener('click', () => {
         return (container.offsetWidth - gap * (slidesVisible - 1)) / slidesVisible + gap;
     }
 
+    // Clone before and after for seamless infinite loop
+    Array.from(slides).reverse().forEach(s => track.insertBefore(s.cloneNode(true), track.firstChild));
+    Array.from(slides).forEach(s => track.appendChild(s.cloneNode(true)));
+    let current = total; // start at real slides (skip prepended clones)
+
     function maxIndex() {
-        return Math.max(0, total - slidesVisible);
+        return total * 3;
     }
 
     // Build dots
     function buildDots() {
         dotsContainer.innerHTML = '';
-        const dotCount = maxIndex() + 1;
+        const dotCount = total - slidesVisible + 1;
         for (let i = 0; i < dotCount; i++) {
             const dot = document.createElement('button');
             dot.className = 'stills-dot' + (i === current ? ' active' : '');
@@ -390,18 +410,29 @@ navHamburger.addEventListener('click', () => {
 
     function updateDots() {
         const dots = dotsContainer.querySelectorAll('.stills-dot');
-        dots.forEach((d, i) => d.classList.toggle('active', i === current));
+        const realCurrent = current % total;
+        dots.forEach((d, i) => d.classList.toggle('active', i === realCurrent));
     }
 
     function updateActiveSlide() {
-        slides.forEach((s, i) => s.classList.toggle('active', i === current + Math.floor(slidesVisible / 2)));
+        slides.forEach((s, i) => s.classList.toggle('active', i === (current % total) + Math.floor(slidesVisible / 2)));
     }
 
     function goTo(index) {
-        current = Math.max(0, Math.min(index, maxIndex()));
+        current = Math.max(0, index);
         track.style.transform = `translateX(${current * getSlideWidth()}px)`;
         updateDots();
         updateActiveSlide();
+        // Silently reset to keep within real slides range
+        if (current >= total * 2 || current < total) {
+            setTimeout(() => {
+                track.style.transition = 'none';
+                current = ((current - total) % total + total) % total + total;
+                track.style.transform = `translateX(${current * getSlideWidth()}px)`;
+                track.getBoundingClientRect(); // force reflow
+                requestAnimationFrame(() => requestAnimationFrame(() => { track.style.transition = ''; }));
+            }, 620);
+        }
     }
 
     // RTL: next goes left (positive transform in RTL)
@@ -450,7 +481,9 @@ navHamburger.addEventListener('click', () => {
 
     // Init
     buildDots();
-    goTo(0);
+    track.style.transition = 'none';
+    track.style.transform = `translateX(${current * getSlideWidth()}px)`;
+    setTimeout(() => { track.style.transition = ''; }, 50);
 })();
 
 // ===== WORKFLOW SCROLL REVEAL =====
