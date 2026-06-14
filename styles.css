@@ -2023,7 +2023,7 @@ body {
     overflow: hidden;
     break-inside: avoid;
     margin-bottom: 6px;
-    border: 1.5px solid rgba(174, 36, 75, 0.25);
+    border: 1.5px solid rgba(0, 0, 0, 0.08);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     animation: testimonialPulse 36s ease-in-out infinite;
 }
