@@ -22,6 +22,14 @@
         a { color: #AE244B; }
         .divider { border: none; border-top: 1px solid rgba(184,160,137,0.3); margin: 40px 0; }
         .level-badge { display: inline-block; background: rgba(174,36,75,0.08); border: 1px solid rgba(174,36,75,0.2); color: #AE244B; border-radius: 100px; padding: 4px 14px; font-size: 0.85rem; font-weight: 600; margin-bottom: 16px; }
+        .site-footer { background: #ede8e0; border-top: 1px solid rgba(184,160,137,0.3); padding: 20px; text-align: center; font-family: 'Assistant', sans-serif; }
+        .footer-credit-row { font-size: 0.85rem; font-weight: 700; color: #8b7355; margin-bottom: 6px; }
+        .footer-credit-row a { color: #8b7355; text-decoration: none; font-weight: 700; }
+        .footer-credit-row a:hover { color: #AE244B; }
+        .footer-links-row { display: flex; align-items: center; justify-content: center; gap: 10px; font-size: 0.82rem; font-weight: 700; }
+        .footer-link { color: #8b7355; text-decoration: none; font-weight: 700; }
+        .footer-link:hover { color: #AE244B; }
+        .footer-sep { opacity: 0.4; font-weight: 400; }
     </style>
 </head>
 <body>
@@ -72,15 +80,17 @@
         </ul>
         <p>אנו מתחייבים לטפל בכל פנייה תוך <strong>5 ימי עסקים</strong> ממועד קבלתה.</p>
 
-        <h2>לא קיבלת מענה מספק?</h2>
-        <p>אם פנית אלינו ולא קיבלת מענה הולם בתוך זמן סביר, ניתן לפנות לנציב שוויון זכויות לאנשים עם מוגבלות במשרד המשפטים:</p>
-        <ul>
-            <li>אתר: <a href="https://www.gov.il/he/departments/ministry_of_justice" target="_blank" rel="noopener noreferrer">www.gov.il — משרד המשפטים</a></li>
-            <li>טלפון: 02-6466340</li>
-        </ul>
-
         <hr class="divider">
         <p>הצהרה זו עודכנה לאחרונה ביוני 2026 ותעודכן מחדש בכל שינוי מהותי באתר ולכל הפחות אחת לשנה, בהתאם לדרישות הרגולציה.</p>
     </div>
+
+    <footer class="site-footer">
+        <div class="footer-credit-row">נבנה על-ידי <a href="https://mtcores.com" target="_blank" rel="noopener">MTCORE</a> פתרונות דיגיטליים</div>
+        <div class="footer-links-row">
+            <a href="accessibility.html" class="footer-link">הצהרת נגישות</a>
+            <span class="footer-sep">|</span>
+            <a href="privacy.html" class="footer-link">מדיניות פרטיות</a>
+        </div>
+    </footer>
 </body>
 </html>
