@@ -669,3 +669,33 @@ navHamburger.addEventListener('click', () => {
         });
     });
 })();
+
+// ===== SECTION ENTRANCE ANIMATIONS =====
+(function() {
+    // Directions cycle per section order
+    var directions = ['from-right', 'from-bottom', 'from-left', 'from-top'];
+
+    var sections = document.querySelectorAll(
+        '.clients-logos-section, .about-section:not(.about-revealed-handled), .portfolio-section, .stills-section, .testimonials-section, .brand-showcase, .services-section, .process-section, .faq-section, .contact-section'
+    );
+
+    sections.forEach(function(sec, i) {
+        // Skip about-section — it has its own reveal
+        if (sec.classList.contains('about-section')) return;
+
+        sec.classList.add('sec-reveal', directions[i % directions.length]);
+    });
+
+    var observer = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('is-visible');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.08 });
+
+    document.querySelectorAll('.sec-reveal').forEach(function(sec) {
+        observer.observe(sec);
+    });
+})();

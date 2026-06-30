@@ -2301,6 +2301,21 @@ body {
     transform: translateX(0);
 }
 
+/* Section entrance animations */
+.sec-reveal {
+    opacity: 0;
+    transition: opacity 0.75s cubic-bezier(0.4, 0, 0.2, 1), transform 0.75s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.sec-reveal.from-right  { transform: translateX(70px); }
+.sec-reveal.from-left   { transform: translateX(-70px); }
+.sec-reveal.from-top    { transform: translateY(-50px); }
+.sec-reveal.from-bottom { transform: translateY(60px); }
+.sec-reveal.is-visible  { opacity: 1; transform: translate(0, 0); }
+
+@media (prefers-reduced-motion: reduce) {
+    .sec-reveal { opacity: 1; transform: none; transition: none; }
+}
+
 /* Mobile: single column */
 @media (max-width: 640px) {
     .process-timeline {
