@@ -3435,6 +3435,13 @@ body {
 .cookies-banner.visible {
     display: block;
 }
+.cookies-title {
+    font-family: 'Assistant', sans-serif;
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--text-dark);
+    margin-bottom: 8px;
+}
 .cookies-text {
     font-family: 'Assistant', sans-serif;
     font-size: 0.9rem;
