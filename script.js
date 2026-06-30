@@ -619,3 +619,53 @@ navHamburger.addEventListener('click', () => {
     }, { threshold: 0.6 });
     items.forEach(function(item) { observer.observe(item); });
 })();
+
+// ===== CONTACT FORM → GOOGLE APPS SCRIPT =====
+(function() {
+    var form = document.querySelector('.contact-form');
+    if (!form) return;
+
+    var SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwWulTctqVXNuhm7NhvkERYkH715noZNOhrR7IHWBDeME129U3VRVuCk3pe4hTs6qMdbw/exec';
+
+    form.addEventListener('submit', function(e) {
+        e.preventDefault();
+
+        var btn = form.querySelector('.contact-submit');
+        var btnText = btn.querySelector('span');
+        var originalText = btnText.textContent;
+
+        btnText.textContent = 'שולח...';
+        btn.disabled = true;
+
+        var data = {
+            name:  form.querySelector('[name="name"]').value,
+            phone: form.querySelector('[name="phone"]').value,
+            email: form.querySelector('[name="email"]').value
+        };
+
+        fetch(SCRIPT_URL, {
+            method: 'POST',
+            body: JSON.stringify(data)
+        })
+        .then(function(res) { return res.json(); })
+        .then(function(json) {
+            if (json.status === 'ok') {
+                btnText.textContent = '✓ נשלח בהצלחה!';
+                form.reset();
+                setTimeout(function() {
+                    btnText.textContent = originalText;
+                    btn.disabled = false;
+                }, 3000);
+            } else {
+                throw new Error('error');
+            }
+        })
+        .catch(function() {
+            btnText.textContent = 'שגיאה, נסה שוב';
+            btn.disabled = false;
+            setTimeout(function() {
+                btnText.textContent = originalText;
+            }, 3000);
+        });
+    });
+})();
